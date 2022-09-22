@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4832F011D6403D9C4D0DF77F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F86A39DFD44562CC67CD /* RatingView.swift */; };
+		4832F852D18505D757AE993E /* GameDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F07144A92501F6C86812 /* GameDetailModel.swift */; };
 		577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276A28DBDD2900118BD4 /* iGameApp.swift */; };
 		577A276D28DBDD2900118BD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276C28DBDD2900118BD4 /* ContentView.swift */; };
 		577A276F28DBDD2A00118BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577A276E28DBDD2A00118BD4 /* Assets.xcassets */; };
 		577A277228DBDD2A00118BD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577A277128DBDD2A00118BD4 /* Preview Assets.xcassets */; };
+		577A277D28DC217800118BD4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 577A277C28DC217800118BD4 /* Alamofire */; };
+		577A278028DC219D00118BD4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 577A277F28DC219D00118BD4 /* SwiftyJSON */; };
+		577A278428DC404D00118BD4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278328DC404D00118BD4 /* API.swift */; };
+		577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278528DC703A00118BD4 /* GameDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4832F07144A92501F6C86812 /* GameDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailModel.swift; sourceTree = "<group>"; };
+		4832F86A39DFD44562CC67CD /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		577A276728DBDD2900118BD4 /* iGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		577A276A28DBDD2900118BD4 /* iGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGameApp.swift; sourceTree = "<group>"; };
 		577A276C28DBDD2900118BD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		577A276E28DBDD2A00118BD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		577A277128DBDD2A00118BD4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		577A278328DC404D00118BD4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		577A278528DC703A00118BD4 /* GameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				577A278028DC219D00118BD4 /* SwiftyJSON in Frameworks */,
+				577A277D28DC217800118BD4 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +63,9 @@
 		577A276928DBDD2900118BD4 /* iGame */ = {
 			isa = PBXGroup;
 			children = (
-				577A276A28DBDD2900118BD4 /* iGameApp.swift */,
-				577A276C28DBDD2900118BD4 /* ContentView.swift */,
+				577A277A28DBE47500118BD4 /* Controller */,
+				577A277928DBE46F00118BD4 /* View */,
+				577A277828DBE46500118BD4 /* API */,
 				577A276E28DBDD2A00118BD4 /* Assets.xcassets */,
 				577A277028DBDD2A00118BD4 /* Preview Content */,
 			);
@@ -65,6 +78,33 @@
 				577A277128DBDD2A00118BD4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		577A277828DBE46500118BD4 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				577A278328DC404D00118BD4 /* API.swift */,
+				4832F07144A92501F6C86812 /* GameDetailModel.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		577A277928DBE46F00118BD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4832F86A39DFD44562CC67CD /* RatingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		577A277A28DBE47500118BD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				577A276A28DBDD2900118BD4 /* iGameApp.swift */,
+				577A276C28DBDD2900118BD4 /* ContentView.swift */,
+				577A278528DC703A00118BD4 /* GameDetailView.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +123,10 @@
 			dependencies = (
 			);
 			name = iGame;
+			packageProductDependencies = (
+				577A277C28DC217800118BD4 /* Alamofire */,
+				577A277F28DC219D00118BD4 /* SwiftyJSON */,
+			);
 			productName = iGame;
 			productReference = 577A276728DBDD2900118BD4 /* iGame.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +155,10 @@
 				Base,
 			);
 			mainGroup = 577A275E28DBDD2900118BD4;
+			packageReferences = (
+				577A277B28DC217800118BD4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				577A277E28DC219D00118BD4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 577A276828DBDD2900118BD4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +186,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				577A276D28DBDD2900118BD4 /* ContentView.swift in Sources */,
+				577A278428DC404D00118BD4 /* API.swift in Sources */,
 				577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */,
+				577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */,
+				4832F011D6403D9C4D0DF77F /* RatingView.swift in Sources */,
+				4832F852D18505D757AE993E /* GameDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,8 +325,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -282,9 +335,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anugrahangga.iGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,8 +358,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,9 +368,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anugrahangga.iGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -339,6 +399,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		577A277B28DC217800118BD4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		577A277E28DC219D00118BD4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		577A277C28DC217800118BD4 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 577A277B28DC217800118BD4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		577A277F28DC219D00118BD4 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 577A277E28DC219D00118BD4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 577A275F28DBDD2900118BD4 /* Project object */;
 }
