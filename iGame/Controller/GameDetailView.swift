@@ -19,14 +19,14 @@ struct GameDetailView: View {
                     // HEADER
                     GameHeaderView(image: game.background_image, game: game)
 
-                    VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading, spacing: 15) {
                         // TITLE
                         Text(game.name)
                                 .font(.title)
                                 .fontWeight(.heavy)
-                        Text(game.released.prefix(4))
-                                .font(.title2)
-                                .multilineTextAlignment(.leading)
+//                        Text(game.released.prefix(4))
+//                                .font(.title2)
+//                                .multilineTextAlignment(.leading)
                         HStack {
                             RatingView(rating: game.rating)
                             Text("(\(String(format: "%.1f", game.rating)))")
@@ -38,6 +38,7 @@ struct GameDetailView: View {
 //                                .multilineTextAlignment(.leading)
 //                                .fixedSize(horizontal: true, vertical: false)
 
+                        GameSummaryView(game: game)
 
                         Text("Description".uppercased())
                                 .fontWeight(.bold)
@@ -86,7 +87,7 @@ struct GameDescriptionView: View {
                         .multilineTextAlignment(.leading)
                         .padding()
             }
-                    .navigationTitle("\(game.name) Description")
+                    .navigationTitle("Description")
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button("Done") {
