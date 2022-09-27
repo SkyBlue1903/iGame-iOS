@@ -10,7 +10,7 @@ struct RatingView: View{
         HStack{
             ForEach(1..<6){ item in
                 Image(systemName: item <= Int(rating) ? "star.fill" : item == Int(rating) + 1 && rating.truncatingRemainder(dividingBy: 1) != 0 ? "star.leadinghalf.fill" : "star")
-                    .foregroundColor(.yellow)
+
             }
         }
     }

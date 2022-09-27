@@ -18,6 +18,7 @@ struct ContentView: View {
                     HStack {
                         AsyncImage(url: URL(string: game.background_image)!) { image in
                             image.resizable()
+                                    .scaledToFill()
                                     .frame(width: 100, height: 100)
                                     .cornerRadius(10)
                         } placeholder: {
@@ -44,8 +45,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

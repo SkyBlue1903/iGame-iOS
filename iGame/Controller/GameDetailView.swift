@@ -12,42 +12,57 @@ struct GameDetailView: View {
     var game: Game
 
     var body: some View {
-        VStack {
-            AsyncImage(url: URL(string: game.background_image)!) { image in
-                image.resizable()
-                        .frame(width: 250, height: 250)
-                        .cornerRadius(10)
-            } placeholder: {
-                ProgressView()
-                        .frame(width: 250, height: 250)
-                        .scaleEffect(1.5)
-            }
-            VStack(alignment: .leading) {
-                Text(game.name)
-                    .font(.headline)
-                Text(game.released.prefix(4))
-                    .font(.subheadline)
-                HStack {
-                    RatingView(rating: game.rating)
-                    Text("(\(String(format: "%.1f", game.rating)))")
-                        .font(.subheadline)
-                }
-                Text("Genres: \(game.genres.joined(separator: ", "))")
-                    .font(.subheadline)
-                Text("Platforms: \(game.platforms.joined(separator: ", "))")
-                    .font(.subheadline)
-                Text(game.description)
-                    .font(.subheadline)
-                    .padding(.top)
-            }
-        }
-        .padding()
-        .navigationTitle("Detail")
-    }
-}
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .center, spacing: 20) {
+                    // HEADER
+                    GameHeaderView(image: game.background_image, game: game)
 
-struct GameDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameDetailView(game: Game(id: 1, name: "Test", released: "2021-09-22", rating: 4.5, background_image: "https://media.rawg.io/media/games/84d/84da2ac3fdfc6507802a67e8ac84a788.jpg", description: "Test", genres: ["Action", "Adventure"], platforms: ["PC", "PlayStation 4", "Xbox One"]))
+                    VStack(alignment: .leading, spacing: 20) {
+                        // TITLE
+                        Text(game.name)
+                                .font(.title)
+                                .fontWeight(.heavy)
+
+                        //
+                        Text(game.released.prefix(4))
+                                .font(.title2)
+                                .multilineTextAlignment(.leading)
+
+//                        // NUTRIENTS
+//                        FruitNutrientsView(fruit: fruit)
+//
+//                        // SUBHEADLINE
+//                        Text("Learn more about \(fruit.title)".uppercased())
+//                                .fontWeight(.bold)
+//                                .foregroundColor(fruit.gradientColors[1])
+//
+//                        // DESCRIPTION
+//                        Text(fruit.description)
+//                                .multilineTextAlignment(.leading)
+//
+//                        // LINK
+//                        SourceLinkView()
+//                                .padding(.top, 10)
+//                                .padding(.bottom, 40)
+                    } //: VSTACK
+                            .padding(.horizontal, 20)
+                            .frame(maxWidth: 640, alignment: .center)
+                } //: VSTACK
+                        .navigationBarTitle(game.name, displayMode: .inline)
+                        .navigationBarHidden(true)
+            } //: SCROLL
+                    .edgesIgnoringSafeArea(.top)
+        } //: NAVIGATION
+                .navigationViewStyle(StackNavigationViewStyle())
+        }
     }
-}
+
+
+//}
+
+//struct GameDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GameDetailView(game: Game(id: 1, name: "Test", released: "2021-09-22", rating: 4.5, background_image: "https://media.rawg.io/media/games/84d/84da2ac3fdfc6507802a67e8ac84a788.jpg", description: "Test", genres: ["Action", "Adventure"], platforms: ["PC", "PlayStation 4", "Xbox One"]))
+//    }
+//}

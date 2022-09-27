@@ -15,9 +15,18 @@ struct Game: Codable, Identifiable {
     let released: String
     let rating: Double
     let background_image: String
+
+    // property from gamedetail url
     let description: String
+    let website: String
     let genres: [String]
+    let publishers: [String]
+    let developers: [String]
     let platforms: [String]
+    let tags: [String]
+
+
+
 }
 
 class FetchGame: ObservableObject {
@@ -31,20 +40,36 @@ class FetchGame: ObservableObject {
                 let json = JSON(result!)
                 let data = json["results"].arrayValue
                 for i in data {
-                    print(i)
                     let id = i["id"].intValue
                     let name = i["name"].stringValue
                     let released = i["released"].stringValue
                     let rating = i["rating"].doubleValue
                     let background_image = i["background_image"].stringValue
-                    let description = i["description"].stringValue
-                    let genres = i["genres"].arrayValue.map({$0["name"].stringValue})
-                    let platforms = i["platforms"].arrayValue.map({$0["platform"]["name"].stringValue})
 
-                    let newGame = Game(id: id, name: name, released: released, rating: rating, background_image: background_image, description: description, genres: genres, platforms: platforms)
-                    self.gamesData.append(newGame)
+
+                    // Game Detail Fetch URL
+                    let detailURL = "https://api.rawg.io/api/games/\(id)?key=51dba43fdb814742bc67c11eec616afa"
+                    AF.request(detailURL).responseJSON { response in
+                        let result = response.data
+                        if result != nil {
+                            let json = JSON(result!)
+                            let description = json["description_raw"].stringValue
+                            let website = json["website"].stringValue
+                            let genres = json["genres"].arrayValue.map({$0["name"].stringValue})
+                            let publishers = json["publishers"].arrayValue.map({$0["name"].stringValue})
+                            let developers = json["developers"].arrayValue.map({$0["name"].stringValue})
+                            let platforms = json["platforms"].arrayValue.map({$0["platform"]["name"].stringValue})
+                            let tags = json["tags"].arrayValue.map({$0["name"].stringValue})
+
+
+                            DispatchQueue.main.async {
+                                self.gamesData.append(Game(id: id, name: name, released: released, rating: rating, background_image: background_image, description: description, website: website, genres: genres, publishers: publishers, developers: developers, platforms: platforms, tags: tags))
+                            }
+                        }
+                    }
                 }
             }
         }
+
     }
 }

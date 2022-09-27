@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4832F011D6403D9C4D0DF77F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F86A39DFD44562CC67CD /* RatingView.swift */; };
-		4832F852D18505D757AE993E /* GameDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F07144A92501F6C86812 /* GameDetailModel.swift */; };
 		577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276A28DBDD2900118BD4 /* iGameApp.swift */; };
 		577A276D28DBDD2900118BD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276C28DBDD2900118BD4 /* ContentView.swift */; };
 		577A276F28DBDD2A00118BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577A276E28DBDD2A00118BD4 /* Assets.xcassets */; };
@@ -17,10 +16,10 @@
 		577A278028DC219D00118BD4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 577A277F28DC219D00118BD4 /* SwiftyJSON */; };
 		577A278428DC404D00118BD4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278328DC404D00118BD4 /* API.swift */; };
 		577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278528DC703A00118BD4 /* GameDetailView.swift */; };
+		57EFB63D28DCA0E90054A8A5 /* GameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4832F07144A92501F6C86812 /* GameDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailModel.swift; sourceTree = "<group>"; };
 		4832F86A39DFD44562CC67CD /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		577A276728DBDD2900118BD4 /* iGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		577A276A28DBDD2900118BD4 /* iGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGameApp.swift; sourceTree = "<group>"; };
@@ -29,6 +28,7 @@
 		577A277128DBDD2A00118BD4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		577A278328DC404D00118BD4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		577A278528DC703A00118BD4 /* GameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailView.swift; sourceTree = "<group>"; };
+		57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				577A278328DC404D00118BD4 /* API.swift */,
-				4832F07144A92501F6C86812 /* GameDetailModel.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -93,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				4832F86A39DFD44562CC67CD /* RatingView.swift */,
+				57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,10 +187,10 @@
 			files = (
 				577A276D28DBDD2900118BD4 /* ContentView.swift in Sources */,
 				577A278428DC404D00118BD4 /* API.swift in Sources */,
+				57EFB63D28DCA0E90054A8A5 /* GameHeaderView.swift in Sources */,
 				577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */,
 				577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */,
 				4832F011D6403D9C4D0DF77F /* RatingView.swift in Sources */,
-				4832F852D18505D757AE993E /* GameDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
