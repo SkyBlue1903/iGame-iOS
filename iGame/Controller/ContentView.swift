@@ -9,7 +9,9 @@ import SwiftUI
 
 
 struct ContentView: View {
+
     @ObservedObject var fetchGame = FetchGame()
+    @State var searchQuery = ""
 
     var body: some View {
         NavigationView {
@@ -26,22 +28,23 @@ struct ContentView: View {
                                     .frame(width: 100, height: 100)
                                     .scaleEffect(1.5)
                         }
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 5) {
                             Text(game.name)
-                                .font(.headline)
+                                    .font(.headline)
                             Text(game.released.prefix(4))
-                                .font(.subheadline)
+                                    .font(.subheadline)
                             HStack {
                                 RatingView(rating: game.rating)
                                 Text("(\(String(format: "%.1f", game.rating)))")
-                                    .font(.subheadline)
+                                        .font(.subheadline)
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("iGame")
+                    .navigationTitle("iGame")
         }
+                .searchable(text: $searchQuery)
     }
 }
 

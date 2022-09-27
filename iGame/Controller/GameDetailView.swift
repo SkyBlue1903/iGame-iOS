@@ -10,6 +10,7 @@ import SwiftUI
 struct GameDetailView: View {
     
     var game: Game
+    @State private var descIsExpanded = false
 
     var body: some View {
         NavigationView {
@@ -23,23 +24,37 @@ struct GameDetailView: View {
                         Text(game.name)
                                 .font(.title)
                                 .fontWeight(.heavy)
-
-                        //
                         Text(game.released.prefix(4))
                                 .font(.title2)
                                 .multilineTextAlignment(.leading)
+                        HStack {
+                            RatingView(rating: game.rating)
+                            Text("(\(String(format: "%.1f", game.rating)))")
+                                    .font(.subheadline)
+                        }
+//                        Text(game.platforms.joined(separator: ", "))
+//                                .font(.subheadline)
+//                                .foregroundColor(.secondary)
+//                                .multilineTextAlignment(.leading)
+//                                .fixedSize(horizontal: true, vertical: false)
 
-//                        // NUTRIENTS
-//                        FruitNutrientsView(fruit: fruit)
-//
-//                        // SUBHEADLINE
-//                        Text("Learn more about \(fruit.title)".uppercased())
-//                                .fontWeight(.bold)
-//                                .foregroundColor(fruit.gradientColors[1])
+
+                        Text("Description".uppercased())
+                                .fontWeight(.bold)
 //
 //                        // DESCRIPTION
-//                        Text(fruit.description)
-//                                .multilineTextAlignment(.leading)
+                        VStack(alignment: .trailing, spacing: 5) {
+                            Text(game.description)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(5)
+                            Button("Read more") {
+                                descIsExpanded.toggle()
+                            }
+                                    .sheet(isPresented: $descIsExpanded) {
+                                        GameDescriptionView(game: game)
+                                    }
+                        }
+
 //
 //                        // LINK
 //                        SourceLinkView()
@@ -47,7 +62,7 @@ struct GameDetailView: View {
 //                                .padding(.bottom, 40)
                     } //: VSTACK
                             .padding(.horizontal, 20)
-                            .frame(maxWidth: 640, alignment: .center)
+//                            .frame(maxWidth: 640, alignment: .center)
                 } //: VSTACK
                         .navigationBarTitle(game.name, displayMode: .inline)
                         .navigationBarHidden(true)
@@ -55,14 +70,40 @@ struct GameDetailView: View {
                     .edgesIgnoringSafeArea(.top)
         } //: NAVIGATION
                 .navigationViewStyle(StackNavigationViewStyle())
-        }
     }
+}
 
+
+struct GameDescriptionView: View {
+
+    @Environment(\.dismiss) var dismiss
+    var game: Game
+
+    var body: some View {
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: true) {
+                Text(game.description)
+                        .multilineTextAlignment(.leading)
+                        .padding()
+            }
+                    .navigationTitle("\(game.name) Description")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Done") {
+                                dismiss()
+                            }
+                        }
+                    }
+        }
+
+
+    }
+}
 
 //}
 
 //struct GameDetailView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        GameDetailView(game: Game(id: 1, name: "Test", released: "2021-09-22", rating: 4.5, background_image: "https://media.rawg.io/media/games/84d/84da2ac3fdfc6507802a67e8ac84a788.jpg", description: "Test", genres: ["Action", "Adventure"], platforms: ["PC", "PlayStation 4", "Xbox One"]))
+//        GameDetailView()
 //    }
 //}

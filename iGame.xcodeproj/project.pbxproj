@@ -16,6 +16,7 @@
 		577A278028DC219D00118BD4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 577A277F28DC219D00118BD4 /* SwiftyJSON */; };
 		577A278428DC404D00118BD4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278328DC404D00118BD4 /* API.swift */; };
 		577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278528DC703A00118BD4 /* GameDetailView.swift */; };
+		57DF6D1428E324B4002BC050 /* GameSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF6D1328E324B4002BC050 /* GameSummaryView.swift */; };
 		57EFB63D28DCA0E90054A8A5 /* GameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		577A277128DBDD2A00118BD4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		577A278328DC404D00118BD4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		577A278528DC703A00118BD4 /* GameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailView.swift; sourceTree = "<group>"; };
+		57DF6D1328E324B4002BC050 /* GameSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSummaryView.swift; sourceTree = "<group>"; };
 		57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 			children = (
 				4832F86A39DFD44562CC67CD /* RatingView.swift */,
 				57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */,
+				57DF6D1328E324B4002BC050 /* GameSummaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				577A276D28DBDD2900118BD4 /* ContentView.swift in Sources */,
 				577A278428DC404D00118BD4 /* API.swift in Sources */,
 				57EFB63D28DCA0E90054A8A5 /* GameHeaderView.swift in Sources */,
+				57DF6D1428E324B4002BC050 /* GameSummaryView.swift in Sources */,
 				577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */,
 				577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */,
 				4832F011D6403D9C4D0DF77F /* RatingView.swift in Sources */,

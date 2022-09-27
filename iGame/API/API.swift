@@ -61,10 +61,10 @@ class FetchGame: ObservableObject {
                             let platforms = json["platforms"].arrayValue.map({$0["platform"]["name"].stringValue})
                             let tags = json["tags"].arrayValue.map({$0["name"].stringValue})
 
-
                             DispatchQueue.main.async {
                                 self.gamesData.append(Game(id: id, name: name, released: released, rating: rating, background_image: background_image, description: description, website: website, genres: genres, publishers: publishers, developers: developers, platforms: platforms, tags: tags))
                             }
+
                         }
                     }
                 }

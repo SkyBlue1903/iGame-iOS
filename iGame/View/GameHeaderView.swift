@@ -15,7 +15,7 @@ struct GameHeaderView: View {
             AsyncImage(url: URL(string: game.background_image)!, content: { image in
                 image.resizable()
                         .scaledToFill()
-                        .frame(height: 430)
+                        .frame(width: UIScreen.main.bounds.width, height: 430)
 
             }, placeholder: {
                 ProgressView()
