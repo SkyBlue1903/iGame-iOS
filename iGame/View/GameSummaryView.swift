@@ -26,7 +26,7 @@ struct GameSummaryView: View {
                         Text(game.released)
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 4.5)
+                            .padding(.vertical, 5)
 
                     // ----------------------------------
 
@@ -40,7 +40,7 @@ struct GameSummaryView: View {
                         Text(game.developers.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 4.5)
+                            .padding(.vertical, 5)
 
                     // ----------------------------------
 
@@ -54,7 +54,7 @@ struct GameSummaryView: View {
                         Text(game.publishers.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 4.5)
+                            .padding(.vertical, 5)
 
                     // ----------------------------------
 
@@ -67,7 +67,7 @@ struct GameSummaryView: View {
                         Spacer(minLength: 60)
 
                         VStack{
-                            ForEach((0...2), id: \.self) {
+                            ForEach((0...3), id: \.self) {
                                 var tempArray = game.ratings[$0].components(separatedBy: " ")
 
                                 VStack(alignment: .trailing) {
@@ -93,7 +93,7 @@ struct GameSummaryView: View {
                         }
 
                     }
-                            .padding(.vertical, 4.5)
+                            .padding(.vertical, 5)
 
                     // ----------------------------------
 
@@ -107,7 +107,7 @@ struct GameSummaryView: View {
                         Text(game.platforms.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 4.5)
+                            .padding(.vertical, 5)
 
                     // ----------------------------------
 
@@ -121,7 +121,7 @@ struct GameSummaryView: View {
                         Text(game.genres.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 4.5)
+                            .padding(.vertical, 5)
 
                     // ----------------------------------
 
@@ -135,7 +135,7 @@ struct GameSummaryView: View {
                         Text(game.tags.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 4.5)
+                            .padding(.vertical, 5)
                 }
             }
         }

@@ -16,7 +16,6 @@ struct Game: Codable, Identifiable {
     let rating: Double
     let background_image: String
 
-    // property from gamedetail url
     let description: String
     let website: String
     let genres: [String]
@@ -25,6 +24,7 @@ struct Game: Codable, Identifiable {
     let platforms: [String]
     let tags: [String]
     let ratings: [String]
+    let screenshots: [String]
 
 
 
@@ -34,7 +34,7 @@ class FetchGame: ObservableObject {
         @Published var gamesData = [Game]()
 
     init() {
-        let url = "https://api.rawg.io/api/games?key=51dba43fdb814742bc67c11eec616afa&page_size=3"
+        let url = "https://api.rawg.io/api/games?key=51dba43fdb814742bc67c11eec616afa"
         AF.request(url).responseJSON { response in
             let result = response.data
             if result != nil {
@@ -62,10 +62,23 @@ class FetchGame: ObservableObject {
                             let platforms = json["platforms"].arrayValue.map({$0["platform"]["name"].stringValue})
                             let tags = json["tags"].arrayValue.map({$0["name"].stringValue})
                             let ratings = json["ratings"].arrayValue.map({"\($0["title"].stringValue) \($0["count"].intValue) \($0["percent"].intValue)%"})
-                            print(ratings)
+//                            print(ratings)
 
-                            DispatchQueue.main.async {
-                                self.gamesData.append(Game(id: id, name: name, released: released, rating: rating, background_image: background_image, description: description, website: website, genres: genres, publishers: publishers, developers: developers, platforms: platforms, tags: tags, ratings: ratings))
+
+                            // Game screenshots
+                            let detailURL = "https://api.rawg.io/api/games/\(id)/screenshots?key=51dba43fdb814742bc67c11eec616afa"
+
+                            AF.request(detailURL).responseJSON { response in
+                                let result = response.data
+                                if result != nil {
+                                    let json = JSON(result!)
+                                    let screenshots = json["results"].arrayValue.map({$0["image"].stringValue})
+//                                    print(screenshots)
+
+                                    DispatchQueue.main.async {
+                                        self.gamesData.append(Game(id: id, name: name, released: released, rating: rating, background_image: background_image, description: description, website: website, genres: genres, publishers: publishers, developers: developers, platforms: platforms, tags: tags, ratings: ratings, screenshots: screenshots))
+                                    }
+                                }
                             }
 
                         }

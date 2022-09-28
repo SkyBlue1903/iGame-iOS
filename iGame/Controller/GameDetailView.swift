@@ -13,6 +13,7 @@ struct GameDetailView: View {
     @State private var descIsExpanded = false
 
     var body: some View {
+
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .center, spacing: 20) {
@@ -44,6 +45,29 @@ struct GameDetailView: View {
                                         GameDescriptionView(game: game)
                                     }
                         }
+
+                        Text("Gameplay Screenshots")
+                                .fontWeight(.bold)
+                                .font(.system(.title2))
+                        TabView {
+                            ForEach(0..<game.screenshots.count) { index in
+                                AsyncImage(url: URL(string: game.screenshots[index])!) { image in
+                                    image.resizable()
+                                            .scaledToFill()
+                                            .frame(height: 200)
+                                            .cornerRadius(15)
+                                            .padding(.horizontal)
+                                } placeholder: {
+                                    ProgressView()
+                                            .frame(height: 200)
+                                            .scaleEffect(1.5)
+                                }
+                            }
+                        }
+                                .frame(height: 200)
+                                .padding(.top)
+                                .tabViewStyle(PageTabViewStyle())
+
                         WebsiteButtonView(game: game)
                                 .padding(.top, 10)
                                 .padding(.bottom, 40)
@@ -57,6 +81,7 @@ struct GameDetailView: View {
         }
                 .navigationViewStyle(StackNavigationViewStyle())
     }
+
 }
 
 
