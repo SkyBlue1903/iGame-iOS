@@ -61,9 +61,7 @@ class FetchGame: ObservableObject {
                             let developers = json["developers"].arrayValue.map({$0["name"].stringValue})
                             let platforms = json["platforms"].arrayValue.map({$0["platform"]["name"].stringValue})
                             let tags = json["tags"].arrayValue.map({$0["name"].stringValue})
-                        // map rating count and percentage to array string
-                            let ratings = json["ratings"].arrayValue.map({"\($0["count"].intValue); \($0["percent"].intValue)%"})
-
+                            let ratings = json["ratings"].arrayValue.map({"\($0["title"].stringValue) \($0["count"].intValue) \($0["percent"].intValue)%"})
                             print(ratings)
 
                             DispatchQueue.main.async {

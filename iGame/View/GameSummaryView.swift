@@ -19,20 +19,20 @@ struct GameSummaryView: View {
                     HStack {
                         Group {
                             Image(systemName: "calendar")
-                            Text("Release date")
+                            Text("Release Date")
                                     .bold()
                         }
                         Spacer(minLength: 60)
                         Text(game.released)
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 3)
+                            .padding(.vertical, 4.5)
 
                     // ----------------------------------
 
                     HStack {
                         Group {
-                            Image(systemName: "gearshape.2.fill")
+                            Image(systemName: "gearshape.fill")
                             Text("Developers")
                                     .bold()
                         }
@@ -40,7 +40,7 @@ struct GameSummaryView: View {
                         Text(game.developers.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 3)
+                            .padding(.vertical, 4.5)
 
                     // ----------------------------------
 
@@ -54,7 +54,7 @@ struct GameSummaryView: View {
                         Text(game.publishers.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 3)
+                            .padding(.vertical, 4.5)
 
                     // ----------------------------------
 
@@ -65,10 +65,35 @@ struct GameSummaryView: View {
                                     .bold()
                         }
                         Spacer(minLength: 60)
-                        Text("Unavailable")
-                                .multilineTextAlignment(.trailing)
+
+                        VStack{
+                            ForEach((0...2), id: \.self) {
+                                var tempArray = game.ratings[$0].components(separatedBy: " ")
+
+                                VStack(alignment: .trailing) {
+                                    if #available(iOS 16.0, *) {
+                                        Text("\(tempArray[0])".uppercased())
+                                                .multilineTextAlignment(.trailing)
+                                                .bold()
+                                    } else {
+                                        Text("\(tempArray[0])".uppercased())
+                                                .multilineTextAlignment(.trailing)
+                                    }
+
+                                    HStack {
+                                        Text("\(tempArray[1]) reviews")
+                                                .multilineTextAlignment(.trailing)
+                                        Text("(\((tempArray[2])))")
+                                                .multilineTextAlignment(.trailing)
+                                    }
+                                }
+
+                            }
+
+                        }
+
                     }
-                            .padding(.vertical, 3)
+                            .padding(.vertical, 4.5)
 
                     // ----------------------------------
 
@@ -82,7 +107,7 @@ struct GameSummaryView: View {
                         Text(game.platforms.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 3)
+                            .padding(.vertical, 4.5)
 
                     // ----------------------------------
 
@@ -96,7 +121,7 @@ struct GameSummaryView: View {
                         Text(game.genres.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 3)
+                            .padding(.vertical, 4.5)
 
                     // ----------------------------------
 
@@ -110,7 +135,7 @@ struct GameSummaryView: View {
                         Text(game.tags.joined(separator: ", "))
                                 .multilineTextAlignment(.trailing)
                     }
-                            .padding(.vertical, 3)
+                            .padding(.vertical, 4.5)
                 }
             }
         }

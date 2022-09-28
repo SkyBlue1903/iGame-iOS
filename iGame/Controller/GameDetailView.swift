@@ -16,34 +16,23 @@ struct GameDetailView: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .center, spacing: 20) {
-                    // HEADER
                     GameHeaderView(image: game.background_image, game: game)
 
                     VStack(alignment: .leading, spacing: 15) {
-                        // TITLE
                         Text(game.name)
                                 .font(.title)
                                 .fontWeight(.heavy)
-//                        Text(game.released.prefix(4))
-//                                .font(.title2)
-//                                .multilineTextAlignment(.leading)
                         HStack {
                             RatingView(rating: game.rating)
                             Text("(\(String(format: "%.1f", game.rating)))")
                                     .font(.subheadline)
                         }
-//                        Text(game.platforms.joined(separator: ", "))
-//                                .font(.subheadline)
-//                                .foregroundColor(.secondary)
-//                                .multilineTextAlignment(.leading)
-//                                .fixedSize(horizontal: true, vertical: false)
 
                         GameSummaryView(game: game)
 
-                        Text("Description".uppercased())
+                        Text("Description")
                                 .fontWeight(.bold)
-//
-//                        // DESCRIPTION
+                        .font(.system(.title2))
                         VStack(alignment: .trailing, spacing: 5) {
                             Text(game.description)
                                     .multilineTextAlignment(.leading)
@@ -55,21 +44,17 @@ struct GameDetailView: View {
                                         GameDescriptionView(game: game)
                                     }
                         }
-
-//
-//                        // LINK
-//                        SourceLinkView()
-//                                .padding(.top, 10)
-//                                .padding(.bottom, 40)
-                    } //: VSTACK
+                        WebsiteButtonView(game: game)
+                                .padding(.top, 10)
+                                .padding(.bottom, 40)
+                    }
                             .padding(.horizontal, 20)
-//                            .frame(maxWidth: 640, alignment: .center)
-                } //: VSTACK
+                }
                         .navigationBarTitle(game.name, displayMode: .inline)
                         .navigationBarHidden(true)
-            } //: SCROLL
+            }
                     .edgesIgnoringSafeArea(.top)
-        } //: NAVIGATION
+        }
                 .navigationViewStyle(StackNavigationViewStyle())
     }
 }

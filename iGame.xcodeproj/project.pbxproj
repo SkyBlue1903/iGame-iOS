@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4832F011D6403D9C4D0DF77F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F86A39DFD44562CC67CD /* RatingView.swift */; };
+		4832F78068FCCE569D34927B /* WebsiteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832FFBB876714FC1984BE05 /* WebsiteButtonView.swift */; };
 		577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276A28DBDD2900118BD4 /* iGameApp.swift */; };
 		577A276D28DBDD2900118BD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276C28DBDD2900118BD4 /* ContentView.swift */; };
 		577A276F28DBDD2A00118BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577A276E28DBDD2A00118BD4 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		4832F86A39DFD44562CC67CD /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		4832FFBB876714FC1984BE05 /* WebsiteButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteButtonView.swift; sourceTree = "<group>"; };
 		577A276728DBDD2900118BD4 /* iGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		577A276A28DBDD2900118BD4 /* iGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGameApp.swift; sourceTree = "<group>"; };
 		577A276C28DBDD2900118BD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				4832F86A39DFD44562CC67CD /* RatingView.swift */,
 				57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */,
 				57DF6D1328E324B4002BC050 /* GameSummaryView.swift */,
+				4832FFBB876714FC1984BE05 /* WebsiteButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */,
 				577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */,
 				4832F011D6403D9C4D0DF77F /* RatingView.swift in Sources */,
+				4832F78068FCCE569D34927B /* WebsiteButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
