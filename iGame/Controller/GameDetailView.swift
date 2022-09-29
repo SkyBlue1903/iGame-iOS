@@ -31,21 +31,6 @@ struct GameDetailView: View {
 
                         GameSummaryView(game: game)
 
-                        Text("Description")
-                                .fontWeight(.bold)
-                        .font(.system(.title2))
-                        VStack(alignment: .trailing, spacing: 5) {
-                            Text(game.description)
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(5)
-                            Button("Read more") {
-                                descIsExpanded.toggle()
-                            }
-                                    .sheet(isPresented: $descIsExpanded) {
-                                        GameDescriptionView(game: game)
-                                    }
-                        }
-
                         Text("Gameplay Screenshots")
                                 .fontWeight(.bold)
                                 .font(.system(.title2))
@@ -63,6 +48,21 @@ struct GameDetailView: View {
                                             .scaleEffect(1.5)
                                 }
                             }
+                        }
+
+                        Text("Description")
+                                .fontWeight(.bold)
+                        .font(.system(.title2))
+                        VStack(alignment: .trailing, spacing: 5) {
+                            Text(game.description)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(5)
+                            Button("Read more") {
+                                descIsExpanded.toggle()
+                            }
+                                    .sheet(isPresented: $descIsExpanded) {
+                                        GameDescriptionView(game: game)
+                                    }
                         }
                                 .frame(height: 200)
                                 .padding(.top)

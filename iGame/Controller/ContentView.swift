@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @State private var profileIsExpanded = false
     @ObservedObject var fetchGame = FetchGame()
     @State var searchQuery = ""
 
@@ -44,15 +45,22 @@ struct ContentView: View {
                     }
                 }
                         .navigationTitle("iGame")
+                        .navigationBarItems(trailing: Button("Profile") {
+                            profileIsExpanded.toggle()
+                        }.sheet(isPresented: $profileIsExpanded) {
+                            ProfileView()
+                        })
+
             } else {
                 List {
                     ForEach(searchResults, id: \.self) {
                         Text($0)
                     }
                 }
+                        .navigationTitle("Search Results")
             }
         }
-                .searchable(text: $searchQuery)
+                .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
     }
 
     var searchResults: [String] {
@@ -62,6 +70,7 @@ struct ContentView: View {
             return fetchGame.gamesData.filter { $0.name.contains(searchQuery) }.map { $0.name }
         }
     }
+
 }
 
 
