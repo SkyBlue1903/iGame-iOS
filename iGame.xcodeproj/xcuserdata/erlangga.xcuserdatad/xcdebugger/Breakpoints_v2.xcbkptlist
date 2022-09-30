@@ -20,11 +20,11 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "674E2426-DB92-4BEC-9829-8508A8350396 - 129df1ecfafcf056"
+                  uuid = "674E2426-DB92-4BEC-9829-8508A8350396 - 3e09c6875ba45553"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.AsyncImage&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: CoreGraphics.CGFloat, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0&gt;&gt; in iGame.GameHeaderView.body.getter : some"
+                  symbolName = "iGame.GameHeaderView.body.getter : some"
                   moduleName = "iGame"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/erlangga/Library/Mobile%20Documents/com~apple~CloudDocs/Swift/%5BDicoding%5D%20iOS%20Fundamental/Submission%20Katalog%201/iGame/iGame/View/GameHeaderView.swift"
@@ -32,22 +32,22 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
                   endingLineNumber = "15"
-                  offsetFromSymbolStart = "336">
+                  offsetFromSymbolStart = "288">
                </Location>
                <Location
-                  uuid = "674E2426-DB92-4BEC-9829-8508A8350396 - cf9487f4442cec13"
+                  uuid = "674E2426-DB92-4BEC-9829-8508A8350396 - ebfef1a630d175c5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftUI.Image) -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.AsyncImage&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: CoreGraphics.CGFloat, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0&gt;&gt; in iGame.GameHeaderView.body.getter : some"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.clipped(antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in iGame.GameHeaderView.body.getter : some"
                   moduleName = "iGame"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/erlangga/Library/Mobile%20Documents/com~apple~CloudDocs/Swift/%5BDicoding%5D%20iOS%20Fundamental/Submission%20Katalog%201/iGame/iGame/View/GameHeaderView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "104">
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "168">
                </Location>
             </Locations>
          </BreakpointContent>

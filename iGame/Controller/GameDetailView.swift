@@ -108,11 +108,3 @@ struct GameDescriptionView: View {
 
     }
 }
-
-//}
-
-//struct GameDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GameDetailView()
-//    }
-//}

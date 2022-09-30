@@ -21,11 +21,3 @@ struct WebsiteButtonView: View {
         }
     }
 }
-
-//struct WebsiteButtonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WebsiteButtonView(game: )
-//                .previewLayout(.sizeThatFits)
-//                .padding()
-//    }
-//}
