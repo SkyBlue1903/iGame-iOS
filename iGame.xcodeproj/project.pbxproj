@@ -18,6 +18,7 @@
 		577A278028DC219D00118BD4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 577A277F28DC219D00118BD4 /* SwiftyJSON */; };
 		577A278428DC404D00118BD4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278328DC404D00118BD4 /* API.swift */; };
 		577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278528DC703A00118BD4 /* GameDetailView.swift */; };
+		578C27DB28E5F7F600359B12 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 578C27DA28E5F7F600359B12 /* SDWebImageSwiftUI */; };
 		57DF6D1428E324B4002BC050 /* GameSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF6D1328E324B4002BC050 /* GameSummaryView.swift */; };
 		57EFB63D28DCA0E90054A8A5 /* GameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				578C27DB28E5F7F600359B12 /* SDWebImageSwiftUI in Frameworks */,
 				577A278028DC219D00118BD4 /* SwiftyJSON in Frameworks */,
 				577A277D28DC217800118BD4 /* Alamofire in Frameworks */,
 			);
@@ -135,6 +137,7 @@
 			packageProductDependencies = (
 				577A277C28DC217800118BD4 /* Alamofire */,
 				577A277F28DC219D00118BD4 /* SwiftyJSON */,
+				578C27DA28E5F7F600359B12 /* SDWebImageSwiftUI */,
 			);
 			productName = iGame;
 			productReference = 577A276728DBDD2900118BD4 /* iGame.app */;
@@ -167,6 +170,7 @@
 			packageReferences = (
 				577A277B28DC217800118BD4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				577A277E28DC219D00118BD4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				578C27D928E5F7F600359B12 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 577A276828DBDD2900118BD4 /* Products */;
 			projectDirPath = "";
@@ -429,6 +433,14 @@
 				kind = branch;
 			};
 		};
+		578C27D928E5F7F600359B12 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -441,6 +453,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 577A277E28DC219D00118BD4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		578C27DA28E5F7F600359B12 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 578C27D928E5F7F600359B12 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

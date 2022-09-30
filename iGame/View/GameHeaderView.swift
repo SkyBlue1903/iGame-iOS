@@ -6,23 +6,19 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct GameHeaderView: View {
     var image: String
     var game: Game
     var body: some View {
         ZStack {
-            AsyncImage(url: URL(string: game.background_image)!, content: { image in
-                image.resizable()
-                        .scaledToFill()
-                        .frame(width: UIScreen.main.bounds.width, height: 430)
-
-            }, placeholder: {
-                ProgressView()
-                        .frame(height: 430)
-                        .scaledToFill()
-                        .scaleEffect(1.5)
-            })
+            // load image using sdwebimage
+            WebImage(url: URL(string: image))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: UIScreen.main.bounds.width, height: 430)
+                    .clipped()
         }
     }
 }

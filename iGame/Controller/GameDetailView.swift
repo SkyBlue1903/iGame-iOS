@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct GameDetailView: View {
     
@@ -36,19 +37,17 @@ struct GameDetailView: View {
                                 .font(.system(.title2))
                         TabView {
                             ForEach(0..<game.screenshots.count) { index in
-                                AsyncImage(url: URL(string: game.screenshots[index])!) { image in
-                                    image.resizable()
-                                            .scaledToFill()
-                                            .frame(height: 200)
-                                            .cornerRadius(15)
-                                            .padding(.horizontal)
-                                } placeholder: {
-                                    ProgressView()
-                                            .frame(height: 200)
-                                            .scaleEffect(1.5)
-                                }
+                                WebImage(url: URL(string: game.screenshots[index]))
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 350, height: 200)
+                                        .cornerRadius(15)
+                                        .padding(.horizontal)
                             }
                         }
+                                .frame(height: 200)
+                                .padding(.top)
+                                .tabViewStyle(PageTabViewStyle())
 
                         Text("Description")
                                 .fontWeight(.bold)
@@ -64,9 +63,8 @@ struct GameDetailView: View {
                                         GameDescriptionView(game: game)
                                     }
                         }
-                                .frame(height: 200)
-                                .padding(.top)
-                                .tabViewStyle(PageTabViewStyle())
+
+
 
                         WebsiteButtonView(game: game)
                                 .padding(.top, 10)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 
 struct ContentView: View {
@@ -20,16 +21,12 @@ struct ContentView: View {
                 List(fetchGame.gamesData) { game in
                     NavigationLink(destination: GameDetailView(game: game)) {
                         HStack {
-                            AsyncImage(url: URL(string: game.background_image)!) { image in
-                                image.resizable()
-                                        .scaledToFill()
-                                        .frame(width: 100, height: 100)
-                                        .cornerRadius(10)
-                            } placeholder: {
-                                ProgressView()
-                                        .frame(width: 100, height: 100)
-                                        .scaleEffect(1.5)
-                            }
+                            WebImage(url: URL(string: game.background_image))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 100)
+                                    .cornerRadius(15)
+
                             VStack(alignment: .leading, spacing: 5) {
                                 Text(game.name)
                                         .font(.headline)
@@ -50,7 +47,6 @@ struct ContentView: View {
                         }.sheet(isPresented: $profileIsExpanded) {
                             ProfileView()
                         })
-
             } else {
                 List {
                     ForEach(searchResults, id: \.self) {

@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SDWebImage
 
 struct Game: Codable, Identifiable {
     let id: Int
