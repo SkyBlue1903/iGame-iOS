@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "674E2426-DB92-4BEC-9829-8508A8350396"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iGame/View/GameHeaderView.swift"
@@ -21,7 +21,7 @@
             <Locations>
                <Location
                   uuid = "674E2426-DB92-4BEC-9829-8508A8350396 - 3e09c6875ba45553"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "iGame.GameHeaderView.body.getter : some"
@@ -36,7 +36,7 @@
                </Location>
                <Location
                   uuid = "674E2426-DB92-4BEC-9829-8508A8350396 - ebfef1a630d175c5"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.clipped(antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in iGame.GameHeaderView.body.getter : some"

@@ -49,8 +49,29 @@ struct ContentView: View {
                         })
             } else {
                 List {
-                    ForEach(searchResults, id: \.self) {
-                        Text($0)
+                    Text("Hasil pencarian untuk: \(searchQuery)")
+ForEach(fetchGame.gamesData.filter({ searchQuery.isEmpty ? true : $0.name.lowercased().contains(searchQuery.lowercased()) })) { game in
+                        NavigationLink(destination: GameDetailView(game: game)) {
+                            HStack {
+                                WebImage(url: URL(string: game.background_image))
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100)
+                                        .cornerRadius(15)
+
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text(game.name)
+                                            .font(.headline)
+                                    Text(game.released.prefix(4))
+                                            .font(.subheadline)
+                                    HStack {
+                                        RatingView(rating: game.rating)
+                                        Text("(\(String(format: "%.1f", game.rating)))")
+                                                .font(.subheadline)
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                         .navigationTitle("Search Results")
