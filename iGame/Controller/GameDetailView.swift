@@ -9,102 +9,101 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct GameDetailView: View {
-    
-    var game: Game
-    @State private var descIsExpanded = false
 
-    var body: some View {
+  var game: Game
+  @State private var descIsExpanded = false
 
-        NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .center, spacing: 20) {
-                    GameHeaderView(image: game.background_image, game: game)
+  var body: some View {
 
-                    VStack(alignment: .leading, spacing: 15) {
-                        Text(game.name)
-                                .font(.title)
-                                .fontWeight(.heavy)
-                        HStack {
-                            RatingView(rating: game.rating)
-                            Text("(\(String(format: "%.1f", game.rating)))")
-                                    .font(.subheadline)
-                        }
+    NavigationView {
+      ScrollView(.vertical, showsIndicators: false) {
+        VStack(alignment: .center, spacing: 20) {
+          GameHeaderView(image: game.background_image, game: game)
 
-                        GameSummaryView(game: game)
-
-                        Text("Gameplay Screenshots")
-                                .fontWeight(.bold)
-                                .font(.system(.title2))
-                        TabView {
-                            ForEach(0..<game.screenshots.count) { index in
-                                WebImage(url: URL(string: game.screenshots[index]))
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 350, height: 200)
-                                        .cornerRadius(15)
-                                        .padding(.horizontal)
-                            }
-                        }
-                                .frame(height: 200)
-                                .padding(.top)
-                                .tabViewStyle(PageTabViewStyle())
-
-                        Text("Description")
-                                .fontWeight(.bold)
-                        .font(.system(.title2))
-                        VStack(alignment: .trailing, spacing: 5) {
-                            Text(game.description)
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(5)
-                            Button("Read more") {
-                                descIsExpanded.toggle()
-                            }
-                                    .sheet(isPresented: $descIsExpanded) {
-                                        GameDescriptionView(game: game)
-                                    }
-                        }
-
-
-
-                        WebsiteButtonView(game: game)
-                                .padding(.top, 10)
-                                .padding(.bottom, 40)
-                    }
-                            .padding(.horizontal, 20)
-                }
-                        .navigationBarTitle(game.name, displayMode: .inline)
-                        .navigationBarHidden(true)
+          VStack(alignment: .leading, spacing: 15) {
+            Text(game.name)
+                    .font(.title)
+                    .fontWeight(.heavy)
+            HStack {
+              RatingView(rating: game.rating)
+              Text("(\(String(format: "%.1f", game.rating)))")
+                      .font(.subheadline)
             }
-                    .edgesIgnoringSafeArea(.top)
+
+            GameSummaryView(game: game)
+
+            Text("Gameplay Screenshots")
+                    .fontWeight(.bold)
+                    .font(.system(.title2))
+            TabView {
+              ForEach(0..<game.screenshots.count) { index in
+                WebImage(url: URL(string: game.screenshots[index]))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 350, height: 200)
+                        .cornerRadius(15)
+                        .padding(.horizontal)
+              }
+            }
+                    .frame(height: 200)
+                    .padding(.top)
+                    .tabViewStyle(PageTabViewStyle())
+
+            Text("Description")
+                    .fontWeight(.bold)
+                    .font(.system(.title2))
+            VStack(alignment: .trailing, spacing: 5) {
+              Text(game.description)
+                      .multilineTextAlignment(.leading)
+                      .lineLimit(5)
+              Button("Read more") {
+                descIsExpanded.toggle()
+              }
+                      .sheet(isPresented: $descIsExpanded) {
+                        GameDescriptionView(game: game)
+                      }
+            }
+
+
+            WebsiteButtonView(game: game)
+                    .padding(.top, 10)
+                    .padding(.bottom, 40)
+          }
+                  .padding(.horizontal, 20)
         }
-                .navigationViewStyle(StackNavigationViewStyle())
+                .navigationBarTitle(game.name, displayMode: .inline)
+                .navigationBarHidden(true)
+      }
+              .edgesIgnoringSafeArea(.top)
     }
+            .navigationViewStyle(StackNavigationViewStyle())
+  }
 
 }
 
 
 struct GameDescriptionView: View {
 
-    @Environment(\.dismiss) var dismiss
-    var game: Game
+  @Environment(\.dismiss) var dismiss
+  var game: Game
 
-    var body: some View {
-        NavigationView {
-            ScrollView(.vertical, showsIndicators: true) {
-                Text(game.description)
-                        .multilineTextAlignment(.leading)
-                        .padding()
-            }
-                    .navigationTitle("Description")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Done") {
-                                dismiss()
-                            }
-                        }
-                    }
-        }
-
-
+  var body: some View {
+    NavigationView {
+      ScrollView(.vertical, showsIndicators: true) {
+        Text(game.description)
+                .multilineTextAlignment(.leading)
+                .padding()
+      }
+              .navigationTitle("Description")
+              .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                  Button("Done") {
+                    dismiss()
+                  }
+                }
+              }
     }
+
+
+  }
 }
