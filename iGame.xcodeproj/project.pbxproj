@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4832F011D6403D9C4D0DF77F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F86A39DFD44562CC67CD /* RatingView.swift */; };
 		4832F78068FCCE569D34927B /* WebsiteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832FFBB876714FC1984BE05 /* WebsiteButtonView.swift */; };
+		4832F9C94A2ABB6C8DA4FB04 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F6F007CFDBC6B28B9FB8 /* DataController.swift */; };
 		5735887A28E5EEED00B8CACA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735887928E5EEED00B8CACA /* ProfileView.swift */; };
 		577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276A28DBDD2900118BD4 /* iGameApp.swift */; };
 		577A276D28DBDD2900118BD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276C28DBDD2900118BD4 /* ContentView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4832F6F007CFDBC6B28B9FB8 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4832F86A39DFD44562CC67CD /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4832FFBB876714FC1984BE05 /* WebsiteButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteButtonView.swift; sourceTree = "<group>"; };
 		5735887928E5EEED00B8CACA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				57B4BF7729003D2C00A2F5A2 /* FavoriteGames.xcdatamodeld */,
+				4832F6F007CFDBC6B28B9FB8 /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */,
 				4832F011D6403D9C4D0DF77F /* RatingView.swift in Sources */,
 				4832F78068FCCE569D34927B /* WebsiteButtonView.swift in Sources */,
+				4832F9C94A2ABB6C8DA4FB04 /* DataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

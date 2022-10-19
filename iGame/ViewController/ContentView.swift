@@ -14,6 +14,8 @@ struct ContentView: View {
   @ObservedObject var fetchGame = FetchGame()
   @State var searchQuery = ""
 
+  @FetchRequest(sortDescriptors: []) var games: FetchedResults<SavedGame>
+
   var body: some View {
     if fetchGame.gamesData.isEmpty {
       NavigationView {
