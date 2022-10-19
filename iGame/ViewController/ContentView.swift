@@ -14,7 +14,9 @@ struct ContentView: View {
   @ObservedObject var fetchGame = FetchGame()
   @State var searchQuery = ""
 
-  @FetchRequest(sortDescriptors: []) var games: FetchedResults<SavedGame>
+  @State private var showingFavoriteView = false
+
+
 
   var body: some View {
     if fetchGame.gamesData.isEmpty {
@@ -51,11 +53,12 @@ struct ContentView: View {
             }
           }
                   .navigationTitle("iGame")
-                  .navigationBarItems(trailing: Button("Profile") {
-                    profileIsExpanded.toggle()
+
+                  .navigationBarItems(trailing: Button("Saved") {
+                    showingFavoriteView.toggle()
                   }
                           .sheet(isPresented: $profileIsExpanded) {
-                            ProfileView()
+                            FavoriteView()
                           })
         } else {
           List {
