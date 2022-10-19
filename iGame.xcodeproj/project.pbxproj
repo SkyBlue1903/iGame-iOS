@@ -19,6 +19,7 @@
 		577A278428DC404D00118BD4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278328DC404D00118BD4 /* API.swift */; };
 		577A278628DC703A00118BD4 /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A278528DC703A00118BD4 /* GameDetailView.swift */; };
 		578C27DB28E5F7F600359B12 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 578C27DA28E5F7F600359B12 /* SDWebImageSwiftUI */; };
+		57B4BF7929003D2C00A2F5A2 /* FavoriteGames.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57B4BF7729003D2C00A2F5A2 /* FavoriteGames.xcdatamodeld */; };
 		57DF6D1428E324B4002BC050 /* GameSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF6D1328E324B4002BC050 /* GameSummaryView.swift */; };
 		57EFB63D28DCA0E90054A8A5 /* GameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		577A277128DBDD2A00118BD4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		577A278328DC404D00118BD4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		577A278528DC703A00118BD4 /* GameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailView.swift; sourceTree = "<group>"; };
+		57B4BF7829003D2C00A2F5A2 /* FavoriteGames.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteGames.xcdatamodel; sourceTree = "<group>"; };
 		57DF6D1328E324B4002BC050 /* GameSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSummaryView.swift; sourceTree = "<group>"; };
 		57EFB63C28DCA0E90054A8A5 /* GameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,11 +73,12 @@
 		577A276928DBDD2900118BD4 /* iGame */ = {
 			isa = PBXGroup;
 			children = (
-				577A277A28DBE47500118BD4 /* Controller */,
+				577A277A28DBE47500118BD4 /* ViewController */,
 				577A277928DBE46F00118BD4 /* View */,
 				577A277828DBE46500118BD4 /* API */,
 				577A276E28DBDD2A00118BD4 /* Assets.xcassets */,
 				577A277028DBDD2A00118BD4 /* Preview Content */,
+				57B4BF7A29003D2F00A2F5A2 /* Model */,
 			);
 			path = iGame;
 			sourceTree = "<group>";
@@ -108,14 +111,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		577A277A28DBE47500118BD4 /* Controller */ = {
+		577A277A28DBE47500118BD4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				577A276A28DBDD2900118BD4 /* iGameApp.swift */,
 				577A276C28DBDD2900118BD4 /* ContentView.swift */,
 				577A278528DC703A00118BD4 /* GameDetailView.swift */,
 			);
-			path = Controller;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		57B4BF7A29003D2F00A2F5A2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				57B4BF7729003D2C00A2F5A2 /* FavoriteGames.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 				577A276D28DBDD2900118BD4 /* ContentView.swift in Sources */,
 				5735887A28E5EEED00B8CACA /* ProfileView.swift in Sources */,
 				577A278428DC404D00118BD4 /* API.swift in Sources */,
+				57B4BF7929003D2C00A2F5A2 /* FavoriteGames.xcdatamodeld in Sources */,
 				57EFB63D28DCA0E90054A8A5 /* GameHeaderView.swift in Sources */,
 				57DF6D1428E324B4002BC050 /* GameSummaryView.swift in Sources */,
 				577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */,
@@ -460,6 +472,19 @@
 			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		57B4BF7729003D2C00A2F5A2 /* FavoriteGames.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				57B4BF7829003D2C00A2F5A2 /* FavoriteGames.xcdatamodel */,
+			);
+			currentVersion = 57B4BF7829003D2C00A2F5A2 /* FavoriteGames.xcdatamodel */;
+			path = FavoriteGames.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 577A275F28DBDD2900118BD4 /* Project object */;
 }

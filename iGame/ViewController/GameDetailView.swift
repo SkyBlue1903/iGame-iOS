@@ -37,12 +37,18 @@ struct GameDetailView: View {
                     .font(.system(.title2))
             TabView {
               ForEach(0..<game.screenshots.count) { index in
-                WebImage(url: URL(string: game.screenshots[index]))
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 350, height: 200)
-                        .cornerRadius(15)
-                        .padding(.horizontal)
+                if game.screenshots.isEmpty {
+                  ProgressView()
+                          .frame(width: 350, height: 350)
+                          .cornerRadius(10)
+                } else {
+                  WebImage(url: URL(string: game.screenshots[index]))
+                          .resizable()
+                          .scaledToFill()
+                          .frame(width: 350, height: 200)
+                          .cornerRadius(15)
+                          .padding(.horizontal)
+                }
               }
             }
                     .frame(height: 200)
