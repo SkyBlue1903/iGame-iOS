@@ -13,6 +13,8 @@ struct GameDetailView: View {
   var game: Game
   @State private var descIsExpanded = false
 
+  @Environment(\.managedObjectContext) var moc
+
   var body: some View {
 
     NavigationView {
@@ -21,9 +23,24 @@ struct GameDetailView: View {
           GameHeaderView(image: game.background_image, game: game)
 
           VStack(alignment: .leading, spacing: 15) {
-            Text(game.name)
-                    .font(.title)
-                    .fontWeight(.heavy)
+            HStack {
+              Text(game.name)
+                      .font(.title)
+                      .fontWeight(.heavy)
+              Spacer()
+              // add favorite icon
+              Button(action: {
+                // save game
+                let newGame = SavedGame(context: moc)
+                newGame.id = Int16(game.id)
+                newGame.name = game.name
+                try? moc.save()
+              }) {
+                Image(systemName: "heart")
+                        .font(.title)
+              }
+
+            }
             HStack {
               RatingView(rating: game.rating)
               Text("(\(String(format: "%.1f", game.rating)))")

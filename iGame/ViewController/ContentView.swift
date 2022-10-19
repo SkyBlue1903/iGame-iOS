@@ -57,7 +57,7 @@ struct ContentView: View {
                   .navigationBarItems(trailing: Button("Saved") {
                     showingFavoriteView.toggle()
                   }
-                          .sheet(isPresented: $profileIsExpanded) {
+                          .sheet(isPresented: $showingFavoriteView) {
                             FavoriteView()
                           })
         } else {

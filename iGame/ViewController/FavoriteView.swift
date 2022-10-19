@@ -18,8 +18,9 @@ struct FavoriteView: View {
                 VStack {
                     Text("No favorite game")
                             .font(.title)
+                            .padding(2.5)
                     Text("Try add one!")
-                            .font(.caption)
+                            .font(.body)
                 }
                 .navigationTitle("Favorite Games")
             } else {
