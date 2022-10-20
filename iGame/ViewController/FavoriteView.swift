@@ -37,10 +37,10 @@ struct FavoriteView: View {
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text(game.name ?? "Unknown")
                                             .font(.headline)
-                                    Text(game.released ?? String("Unkown"))
+                                    Text(game.released!.prefix(4))
                                             .font(.subheadline)
                                     HStack {
-                                        RatingView(rating: game.rating ?? 0)
+                                        RatingView(rating: game.rating)
                                         Text("(\(String(format: "%.1f", game.rating)))")
                                                 .font(.subheadline)
                                     }

@@ -68,7 +68,7 @@ struct GameSummaryView: View {
 
             VStack {
               ForEach((0...3), id: \.self) {
-                var tempArray = game.ratings[$0].components(separatedBy: " ")
+                  let tempArray = game.ratings[$0].components(separatedBy: " ")
 
                 VStack(alignment: .trailing) {
                   if #available(iOS 16.0, *) {

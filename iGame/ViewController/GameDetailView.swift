@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import AlertToast
 
 struct GameDetailView: View {
 
@@ -15,6 +16,8 @@ struct GameDetailView: View {
 
   @Environment(\.managedObjectContext) var moc
   @State private var isFavorite = false
+  @State private var showToast = false
+
 
   var body: some View {
     NavigationView {
@@ -31,6 +34,7 @@ struct GameDetailView: View {
               var results = DataController().checkIfDataExists(id: Int16(game.id))
               if !results && !isFavorite {
                 Button(action: {
+                  showToast.toggle()
                   self.isFavorite.toggle()
                   let newGame = SavedGame(context: moc)
                   newGame.id = Int16(game.id)
@@ -41,7 +45,6 @@ struct GameDetailView: View {
                   try? moc.save()
 
                 }) {
-                  var icon = ""
                   Image(systemName: "star")
                           .font(.title)
                 }
@@ -108,8 +111,13 @@ struct GameDetailView: View {
       }
               .edgesIgnoringSafeArea(.top)
     }
+            .toast(isPresenting: $showToast, duration: 5) {
+              AlertToast(displayMode: .banner(.pop), type: .regular, title: "Success", subTitle: "Go back and press \"Star card\" button to view")
+            }
             .navigationViewStyle(StackNavigationViewStyle())
   }
+    
+    var successToast = AlertToast(type: .error(.green), title: "Game saved", subTitle: "Go back, press \"star card\" icon to view ")
 
 }
 
