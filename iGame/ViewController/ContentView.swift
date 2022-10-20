@@ -54,15 +54,31 @@ struct ContentView: View {
           }
                   .navigationTitle("iGame")
 
-                  .navigationBarItems(trailing: Button("Saved") {
-                    showingFavoriteView.toggle()
+                  .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                      Button(action: {
+                        showingFavoriteView.toggle()
+                      }) {
+                        Image(systemName: "star.square.on.square")
+                      }
+                              .sheet(isPresented: $showingFavoriteView) {
+                                FavoriteView()
+                              }
+                    }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                      Button(action: {
+                        profileIsExpanded.toggle()
+                      }) {
+                        Image(systemName: "person.crop.circle")
+                      }
+                              .sheet(isPresented: $profileIsExpanded) {
+                                ProfileView()
+                              }
+                    }
                   }
-                          .sheet(isPresented: $showingFavoriteView) {
-                            FavoriteView()
-                          })
         } else {
           List {
-            Text("Hasil pencarian untuk: \(searchQuery)")
+            Text("Search results for: \(searchQuery)")
             ForEach(fetchGame.gamesData.filter({ searchQuery.isEmpty ? true : $0.name.lowercased().contains(searchQuery.lowercased()) })) { game in
               NavigationLink(destination: GameDetailView(game: game)) {
                 HStack {

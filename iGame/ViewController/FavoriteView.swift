@@ -27,12 +27,6 @@ struct FavoriteView: View {
             } else {
                 List {
                     ForEach(games) { game in
-//                        VStack {
-//                            Text(game.name ?? "Unknown")
-//                            Text(game.id.description)
-//                        }
-
-//                        NavigationLink(destination: GameDetailView(game: game)) {
                             HStack {
                                 WebImage(url: URL(string: game.background_image ?? "https://raw.githubusercontent.com/koehlersimon/fallback/master/Resources/Public/Images/placeholder.jpg"))
                                         .resizable()
@@ -60,7 +54,6 @@ struct FavoriteView: View {
                             ToolbarItem(placement: .navigationBarLeading) {
 
                                 Button(action: {
-                                    // delete all
                                     for game in games {
                                         moc.delete(game)
                                     }

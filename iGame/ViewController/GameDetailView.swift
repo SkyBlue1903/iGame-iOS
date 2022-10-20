@@ -41,8 +41,8 @@ struct GameDetailView: View {
                   try? moc.save()
 
                 }) {
-                  var icon = "heart"
-                  Image(systemName: "\(icon)")
+                  var icon = ""
+                  Image(systemName: "star")
                           .font(.title)
                 }
                         .transition(.asymmetric(insertion: .scale, removal: .opacity))
