@@ -46,4 +46,20 @@ class DataController:ObservableObject {
       }
     }
   }
+
+  // check data if already exists
+  func checkIfDataExists(id: Int16) -> Bool {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedGame")
+    fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+    do {
+      let count = try container.viewContext.count(for: fetchRequest)
+      if count == 0 {
+        return false
+      }
+    } catch {
+      print("Error: \(error)")
+    }
+    return true
+  }
+
 }

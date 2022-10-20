@@ -14,9 +14,9 @@ struct GameDetailView: View {
   @State private var descIsExpanded = false
 
   @Environment(\.managedObjectContext) var moc
+  @State private var isFavorite = false
 
   var body: some View {
-
     NavigationView {
       ScrollView(.vertical, showsIndicators: false) {
         VStack(alignment: .center, spacing: 20) {
@@ -28,17 +28,26 @@ struct GameDetailView: View {
                       .font(.title)
                       .fontWeight(.heavy)
               Spacer()
-              // add favorite icon
-              Button(action: {
-                // save game
-                let newGame = SavedGame(context: moc)
-                newGame.id = Int16(game.id)
-                newGame.name = game.name
-                try? moc.save()
-              }) {
-                Image(systemName: "heart")
-                        .font(.title)
+              var results = DataController().checkIfDataExists(id: Int16(game.id))
+              if !results && !isFavorite {
+                Button(action: {
+                  self.isFavorite.toggle()
+                  let newGame = SavedGame(context: moc)
+                  newGame.id = Int16(game.id)
+                  newGame.name = game.name
+                  newGame.background_image = game.background_image
+                  newGame.released = game.released
+                  newGame.rating = game.rating
+                  try? moc.save()
+
+                }) {
+                  var icon = "heart"
+                  Image(systemName: "\(icon)")
+                          .font(.title)
+                }
+                        .transition(.asymmetric(insertion: .scale, removal: .opacity))
               }
+
 
             }
             HStack {
