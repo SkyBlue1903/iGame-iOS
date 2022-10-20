@@ -116,8 +116,6 @@ struct GameDetailView: View {
             }
             .navigationViewStyle(StackNavigationViewStyle())
   }
-    
-    var successToast = AlertToast(type: .error(.green), title: "Game saved", subTitle: "Go back, press \"star card\" icon to view ")
 
 }
 
