@@ -42,6 +42,17 @@ struct GameDetailView: View {
                   newGame.background_image = game.background_image
                   newGame.released = game.released
                   newGame.rating = game.rating
+                  let _ = print("Name: \(game.name ?? "No name")")
+                  let _ = print("Tags: \(game.tags as NSObject)")
+                  newGame.game_description = game.description
+                  newGame.website = game.website
+                  newGame.developers = game.developers as NSObject
+                  newGame.publishers = game.publishers as NSObject
+                  newGame.genres = game.genres as NSObject
+                  newGame.platforms = game.platforms as NSObject
+                  newGame.screenshots = game.screenshots as NSObject
+                  newGame.tags = game.tags as NSObject
+                  newGame.ratings = game.ratings as NSObject
                   try? moc.save()
 
                 }) {

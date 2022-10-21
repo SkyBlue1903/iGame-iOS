@@ -33,7 +33,6 @@ struct Game: Codable, Identifiable {
 
 class FetchGame: ObservableObject {
         @Published var gamesData = [Game]()
-
     init() {
         let url = "https://api.rawg.io/api/games?key=51dba43fdb814742bc67c11eec616afa"
         AF.request(url).responseJSON { [self] response in
@@ -94,4 +93,60 @@ class FetchGame: ObservableObject {
             }
         }
     }
+//
+//    func getDescription(id: Int) -> String {
+//
+//        let game = gamesData
+//        let gameDescription = game.first(where: {$0.id == id})?.description
+//        print("Game description: ", gameDescription)
+//        return gameDescription ?? ""
+//    }
+//
+//    func getWebsite(id: Int) -> String {
+//        let game = gamesData
+//        let gameWebsite = game.first(where: {$0.id == id})?.website
+//        return gameWebsite ?? ""
+//    }
+//
+//    func getGenres(id: Int) -> [String] {
+//        let game = gamesData
+//        let gameGenres = game.first(where: {$0.id == id})?.genres
+//        return gameGenres ?? []
+//    }
+//
+//    func getPublishers(id: Int) -> [String] {
+//        let game = gamesData
+//        let gamePublishers = game.first(where: {$0.id == id})?.publishers
+//        return gamePublishers ?? []
+//    }
+//
+//    func getDevelopers(id: Int) -> [String] {
+//        let game = gamesData
+//        let gameDevelopers = game.first(where: {$0.id == id})?.developers
+//        return gameDevelopers ?? []
+//    }
+//
+//    func getPlatforms(id: Int) -> [String] {
+//        let game = gamesData
+//        let gamePlatforms = game.first(where: {$0.id == id})?.platforms
+//        return gamePlatforms ?? []
+//    }
+//
+//    func getTags(id: Int) -> [String] {
+//        let game = gamesData
+//        let gameTags = game.first(where: {$0.id == id})?.tags
+//        return gameTags ?? []
+//    }
+//
+//    func getRatings(id: Int) -> [String] {
+//        let game = gamesData
+//        let gameRatings = game.first(where: {$0.id == id})?.ratings
+//        return gameRatings ?? []
+//    }
+//
+//    func getScreenshots(id: Int) -> [String] {
+//        let game = gamesData
+//        let gameScreenshots = game.first(where: {$0.id == id})?.screenshots
+//        return gameScreenshots ?? []
+//    }
 }
