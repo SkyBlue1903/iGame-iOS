@@ -27,44 +27,39 @@ struct FavoriteView: View {
       } else {
         List {
           ForEach(games) { game in
-            let genresSet =
-            NavigationLink(destination: GameDetailView(game: Game(
-                    id: Int(game.id),
-                    name: game.name ?? "Untitled",
-                    released: game.released ?? "Unknown",
-                    rating: game.rating ?? 0.0,
-                    background_image: game.background_image ?? "",
-                    description: game.game_description ?? "Lorem Ipsum",
-                    website: game.website ?? "",
-                    genres: game.genres as! [String] ?? ["Unknown"],
-                    publishers: game.publishers as! [String] ?? ["Unknown"],
-                    developers: game.developers as! [String] ?? ["Unknown"],
-                    platforms: game.platforms as! [String] ?? ["Unknown"],
-                    tags: game.tags as! [String] ?? ["Unknown"],
-                    ratings: game.ratings as! [String] ?? ["Unknown"],
-                    screenshots: game.screenshots as! [String] ?? ["Unknown"]
-            ))) {
-              HStack {
-                let _ = print("Game name: \(game.name ?? "No name")")
-                WebImage(url: URL(string: game.background_image ?? ""))
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(15)
+//                    NavigationLink(destination: GameDetailView(game: Game(
+//                            id: Int(game.id),
+//                            name: game.name ?? "Untitled",
+//                            released: game.released ?? "Unknown",
+//                            rating: game.rating ?? 0.0,
+//                            background_image: game.background_image ?? "",
+//                            description: game.game_description ?? "Lorem Ipsum",
+//                            website: game.website ?? "",
+//                            genres: game.genres as! [String] ?? ["Unknown"],
+//                            publishers: game.publishers as! [String] ?? ["Unknown"],
+//                            developers: game.developers as! [String] ?? ["Unknown"],
+//                            platforms: game.platforms as! [String] ?? ["Unknown"],
+//                            tags: game.tags as! [String] ?? ["Unknown"],
+//                            ratings: game.ratings as! [String] ?? ["Unknown"],
+//                            screenshots: game.screenshots as! [String] ?? ["Unknown"]
+//                    ))) {
+//                      let _ = print("Game name: \(game.name ?? "No name")")
+//
+//
+//                    }
+            let _ = print("Game Tags:", game.tags as! [String] ?? "No tags")
+            VStack {
+              Text(game.name!)
+                      .font(.body)
+                      .fontWeight(.heavy)
+              ForEach(game.publishers as! [String], id: \.self) { tag in
+                Text(tag)
+                        .multilineTextAlignment(.leading)
+                        .font(.caption)
 
-                VStack(alignment: .leading, spacing: 5) {
-                  Text(game.name ?? "")
-                          .font(.headline)
-                  Text(game.released ?? "")
-                          .font(.subheadline)
-                  HStack {
-                    RatingView(rating: game.rating)
-                    Text("(\(String(format: "%.1f", game.rating)))")
-                            .font(.subheadline)
-                  }
-                }
               }
             }
+
 
           }
                   .onDelete(perform: removeGame)

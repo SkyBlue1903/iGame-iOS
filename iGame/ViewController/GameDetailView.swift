@@ -43,7 +43,7 @@ struct GameDetailView: View {
                   newGame.released = game.released
                   newGame.rating = game.rating
                   let _ = print("Name: \(game.name ?? "No name")")
-                  let _ = print("Tags: \(game.tags as NSObject)")
+                  let _ = print("Tags: \(game.tags as NSObject ?? "No tag" as NSObject)")
                   newGame.game_description = game.description
                   newGame.website = game.website
                   newGame.developers = game.developers as NSObject
