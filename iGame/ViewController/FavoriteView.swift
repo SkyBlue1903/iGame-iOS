@@ -36,15 +36,16 @@ struct FavoriteView: View {
                     background_image: game.background_image ?? "",
                     description: game.game_description ?? "Lorem Ipsum",
                     website: game.website ?? "",
-                    genres: game.genres as [String] ?? ["Unknown"],
-                    publishers: game.publishers as [String] ?? ["Unknown"],
-                    developers: game.developers as [String] ?? ["Unknown"],
-                    platforms: game.platforms as [String] ?? ["Unknown"],
-                    tags: game.tags as [String] ?? ["Unknown"],
-                    ratings: game.ratings as [String] ?? ["Unknown"],
-                    screenshots: game.screenshots as [String] ?? ["Unknown"]
+                    genres: game.genres as! [String] ?? ["Unknown"],
+                    publishers: game.publishers as! [String] ?? ["Unknown"],
+                    developers: game.developers as! [String] ?? ["Unknown"],
+                    platforms: game.platforms as! [String] ?? ["Unknown"],
+                    tags: game.tags as! [String] ?? ["Unknown"],
+                    ratings: game.ratings as! [String] ?? ["Unknown"],
+                    screenshots: game.screenshots as! [String] ?? ["Unknown"]
             ))) {
               HStack {
+                let _ = print("Game name: \(game.name ?? "No name")")
                 WebImage(url: URL(string: game.background_image ?? ""))
                         .resizable()
                         .scaledToFill()
