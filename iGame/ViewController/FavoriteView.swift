@@ -12,6 +12,7 @@ struct FavoriteView: View {
 
   @FetchRequest(sortDescriptors: []) var games: FetchedResults<SavedGame>
   @Environment(\.managedObjectContext) var moc
+  @State private var isPresentDeleteConfirmation = false
 
   var body: some View {
     NavigationView {
@@ -19,7 +20,8 @@ struct FavoriteView: View {
         VStack {
           Text("No favorite game")
                   .font(.title)
-                  .padding(2.5)
+                  .fontWeight(.bold)
+                  .padding(1.5)
           Text("Try add one!")
                   .font(.body)
         }
@@ -49,7 +51,7 @@ struct FavoriteView: View {
                 WebImage(url: URL(string: game.background_image ?? ""))
                         .resizable()
                         .placeholder {
-                          Rectangle().foregroundColor(.gray)
+                          Rectangle()
                         }
                         .indicator(.activity)
                         .transition(.fade(duration: 0.5))
@@ -69,8 +71,6 @@ struct FavoriteView: View {
                 }
               }
             }
-
-
           }
                   .onDelete(perform: removeGame)
         }
@@ -78,13 +78,26 @@ struct FavoriteView: View {
                   ToolbarItem(placement: .navigationBarLeading) {
 
                     Button(action: {
-                      for game in games {
-                        moc.delete(game)
+                      if !games.isEmpty {
+                        isPresentDeleteConfirmation.toggle()
                       }
-                      try? moc.save()
                     }) {
                       Image(systemName: "trash")
+                              .alert(isPresented: $isPresentDeleteConfirmation) {
+                                Alert(
+                                        title: Text("Delete all favorite games?"),
+                                        message: Text("This action cannot be undone."),
+                                        primaryButton: .destructive(Text("Delete")) {
+                                          for game in games {
+                                            moc.delete(game)
+                                          }
+                                          try? moc.save()
+                                        },
+                                        secondaryButton: .cancel()
+                                )
+                              }
                     }
+                    //
                   }
                 }
                 .toolbar {
