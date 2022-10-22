@@ -6,13 +6,13 @@
       "location" : "https://github.com/Alamofire/Alamofire",
       "state" : {
         "branch" : "master",
-        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b"
+        "revision" : "bdecb2c87a21a236dcfe88b21532ad3f0e3d20f4"
       }
     },
     {
       "identity" : "alerttoast",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/elai950/AlertToast.git",
+      "location" : "https://github.com/elai950/AlertToast",
       "state" : {
         "revision" : "a4f4267f6454259ba4ed8f9dadb87334a789c26c",
         "version" : "1.3.7"
@@ -42,7 +42,7 @@
       "location" : "https://github.com/SwiftyJSON/SwiftyJSON",
       "state" : {
         "branch" : "master",
-        "revision" : "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07"
+        "revision" : "f8d4d57ebac1817f6aa161014f1d4e2e119cbf7b"
       }
     }
   ],

@@ -11,6 +11,7 @@ import SwiftyJSON
 import SDWebImage
 
 struct Game: Codable, Identifiable {
+
     let id: Int
     let name: String
     let released: String

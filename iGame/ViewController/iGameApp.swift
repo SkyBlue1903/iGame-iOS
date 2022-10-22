@@ -11,11 +11,16 @@ import SwiftUI
 struct iGameApp: App {
 
   @StateObject private var dataController = DataController()
+  @State var username = UserDefaults.standard.string(forKey: "Username")
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
-              .environment(\.managedObjectContext, dataController.container.viewContext)
+      if username == nil || username == "" {
+        WelcomeView()
+      } else {
+        ContentView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+      }
     }
   }
 }
