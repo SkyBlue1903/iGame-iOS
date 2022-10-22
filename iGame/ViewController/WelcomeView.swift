@@ -15,10 +15,12 @@ struct WelcomeView: View {
 //  @State var photo = ""
   @State var isButtonAppear = false
   @FocusState var isInputActive: Bool
+  @EnvironmentObject var viewRouter: ViewRouter
 
   @ViewBuilder
   var body: some View {
     VStack {
+      let _ = print("Current uname: \(username)")
       Image(uiImage: UIImage(named: "welcome")!)
               .resizable()
               .scaledToFit()
@@ -61,30 +63,71 @@ struct WelcomeView: View {
                 }
               }
       if isButtonAppear {
+//        Button(action: {
+//          Profile.saveProfile(username: username, fullname: fullname, job: job)
+//          ContentView()
+//        }, label: {
+//          VStack {
+//            Text("Let's Go \(Image(systemName: "arrow.forward"))")
+//                    .font(.title3)
+//                    .fontWeight(.bold)
+//                    .foregroundColor(.white)
+//                    .frame(maxWidth: .infinity)
+//                    .frame(height: 60)
+//                    .padding(.horizontal, 100)
+//                    .background(Color.blue)
+//                    .cornerRadius(50)
+//          }
+//                  .padding(.horizontal, 50)
+//                  .padding(.bottom, 25)
+//                  .frame(maxHeight: .infinity, alignment: .bottom)
+//        })
+//                .padding(.top, 30)
+
         Button(action: {
           Profile.saveProfile(username: username, fullname: fullname, job: job)
-          ContentView()
-        }, label: {
-          VStack {
-            Text("Let's Go \(Image(systemName: "arrow.forward"))")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 60)
-                    .padding(.horizontal, 100)
-                    .background(Color.blue)
-                    .cornerRadius(50)
+          withAnimation {
+            viewRouter.currentPage = .home
           }
-                  .padding(.horizontal, 50)
-                  .padding(.bottom, 25)
-                  .frame(maxHeight: .infinity, alignment: .bottom)
-        })
-                .padding(.top, 30)
+        }) {
+          goHomeButton()
+        }
       }
-
-
     }
+            .onAppear {
+              getProfile()
+              if username != "" {
+                viewRouter.currentPage = .home
+              }
+            }
+  }
+
+
+  func getProfile() {
+    username = UserDefaults.standard.string(forKey: "Username") ?? ""
+    fullname = UserDefaults.standard.string(forKey: "Fullname") ?? ""
+    job = UserDefaults.standard.string(forKey: "Job") ?? ""
+  }
+}
+
+struct goHomeButton: View {
+  var body: some View {
+    VStack {
+      Text("Let's Go \(Image(systemName: "arrow.forward"))")
+              .font(.title3)
+              .fontWeight(.bold)
+              .foregroundColor(.white)
+              .frame(maxWidth: .infinity)
+              .frame(height: 60)
+              .padding(.horizontal, 100)
+              .background(Color.blue)
+              .cornerRadius(50)
+    }
+            .padding(.horizontal, 50)
+            .padding(.bottom, 25)
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .padding(.top, 30)
+
   }
 }
 

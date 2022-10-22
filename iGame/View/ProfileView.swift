@@ -14,7 +14,9 @@ struct ProfileView: View {
   @State var job = ""
 //  @State var photo = ""
   @State var isShowingDevPage = false
+  @State var isShowingEditPage = false
   @State private var isShowingAlert = false
+  @EnvironmentObject var viewRouter: ViewRouter
 
   var body: some View {
     NavigationView {
@@ -50,7 +52,7 @@ struct ProfileView: View {
                           isPresented: $isShowingAlert) {
                     Button("Delete", role: .destructive) {
                       Profile.resetProfile()
-                      WelcomeView()
+                      viewRouter.currentPage = .welcome
                     }
                   } message: {
                     Text("This action cannot be undone, continue?")
@@ -61,6 +63,18 @@ struct ProfileView: View {
                 getProfile()
               }
               .navigationTitle("Hi, \(username)!👋")
+              .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                  Button(action: {
+                    isShowingEditPage.toggle()
+                  }) {
+                    Text("Edit Profile")
+                  }
+                          .sheet(isPresented: $isShowingEditPage) {
+                            EditProfileView()
+                          }
+                }
+              }
     }
 
 
