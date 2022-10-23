@@ -97,19 +97,5 @@ struct ContentView: View {
 
   }
 
-  var searchResults: [String] {
-    if searchQuery.isEmpty {
-      return fetchGame.gamesData.map {
-        $0.name
-      }
-    } else {
-      return fetchGame.gamesData.filter {
-                $0.name.contains(searchQuery)
-              }
-              .map {
-                $0.name
-              }
-    }
-  }
 
 }
