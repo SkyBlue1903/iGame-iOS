@@ -20,6 +20,7 @@ struct GameDetailView: View {
 
 
   var body: some View {
+
     NavigationView {
       ScrollView(.vertical, showsIndicators: false) {
         VStack(alignment: .center, spacing: 20) {
@@ -42,8 +43,6 @@ struct GameDetailView: View {
                   newGame.background_image = game.background_image
                   newGame.released = game.released
                   newGame.rating = game.rating
-                  let _ = print("Name: \(game.name ?? "No name")")
-                  let _ = print("Tags: \(game.tags as NSObject ?? "No tag" as NSObject)")
                   newGame.game_description = game.description
                   newGame.website = game.website
                   newGame.developers = game.developers as NSObject
@@ -54,7 +53,6 @@ struct GameDetailView: View {
                   newGame.tags = game.tags as NSObject
                   newGame.ratings = game.ratings as NSObject
                   try? moc.save()
-
                 }) {
                   Image(systemName: "star")
                           .font(.title)
@@ -75,25 +73,23 @@ struct GameDetailView: View {
             Text("Gameplay Screenshots")
                     .fontWeight(.bold)
                     .font(.system(.title2))
-            TabView {
-              ForEach(0..<game.screenshots.count) { index in
-                if game.screenshots.isEmpty {
-                  ProgressView()
-                          .frame(width: 350, height: 350)
-                          .cornerRadius(10)
-                } else {
-                  WebImage(url: URL(string: game.screenshots[index]))
-                          .resizable()
-                          .scaledToFill()
-                          .frame(width: 350, height: 200)
-                          .cornerRadius(15)
-                          .padding(.horizontal)
+            ScrollView(.horizontal, showsIndicators: true) {
+              HStack(alignment: .center, spacing: 15) {
+                ForEach(0..<game.screenshots.count) { index in
+                  if game.screenshots.isEmpty {
+                    ProgressView()
+                            .frame(width: 350, height: 350)
+                            .cornerRadius(10)
+                  } else {
+                    WebImage(url: URL(string: game.screenshots[index]))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 175)
+                            .cornerRadius(15)
+                  }
                 }
               }
             }
-                    .frame(height: 200)
-                    .padding(.top)
-                    .tabViewStyle(PageTabViewStyle())
 
             Text("Description")
                     .fontWeight(.bold)
@@ -109,13 +105,12 @@ struct GameDetailView: View {
                         GameDescriptionView(game: game)
                       }
             }
-
-
             WebsiteButtonView(game: game)
                     .padding(.top, 10)
                     .padding(.bottom, 40)
           }
                   .padding(.horizontal, 20)
+                  .frame(maxWidth: 640, alignment: .center)
         }
                 .navigationBarTitle(game.name, displayMode: .inline)
                 .navigationBarHidden(true)
@@ -123,11 +118,10 @@ struct GameDetailView: View {
               .edgesIgnoringSafeArea(.top)
     }
             .toast(isPresenting: $showToast, duration: 5) {
-              AlertToast(displayMode: .banner(.pop), type: .regular, title: "Success", subTitle: "Go back and press \"Star card\" button to view")
+              AlertToast(displayMode: .banner(.pop), type: .regular, title: "Success", subTitle: "Go to \"Star\" tab button to view")
             }
             .navigationViewStyle(StackNavigationViewStyle())
   }
-
 }
 
 
@@ -152,7 +146,5 @@ struct GameDescriptionView: View {
                 }
               }
     }
-
-
   }
 }

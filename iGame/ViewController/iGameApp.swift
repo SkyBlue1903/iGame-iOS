@@ -15,12 +15,6 @@ struct iGameApp: App {
 
   var body: some Scene {
     WindowGroup {
-//      if username == nil || username == "" {
-//        WelcomeView()
-//      } else {
-//        ContentView()
-//                .environment(\.managedObjectContext, dataController.container.viewContext)
-//      }
         PageController()
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(viewRouter)

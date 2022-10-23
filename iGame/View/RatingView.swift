@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct RatingView: View {
-// made a rating view using uiimage star.fill and star.leadinghalf.fill when rating has decimal number, and star if no rating
   var rating: Double
   var body: some View {
     HStack {

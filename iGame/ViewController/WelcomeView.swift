@@ -12,7 +12,6 @@ struct WelcomeView: View {
   @State var username = ""
   @State var fullname = ""
   @State var job = ""
-//  @State var photo = ""
   @State var isButtonAppear = false
   @FocusState var isInputActive: Bool
   @EnvironmentObject var viewRouter: ViewRouter

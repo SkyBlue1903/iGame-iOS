@@ -5,37 +5,7 @@
 import CoreData
 import Foundation
 
-class DataController:ObservableObject {
-//  let container:NSPersistentContainer
-//
-//    var viewContext:NSManagedObjectContext {
-//        return container.viewContext
-//    }
-//
-//    init(inMemory:Bool = false) {
-//        container = NSPersistentContainer(name: "iGame")
-//
-//        if inMemory {
-//            container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
-//        }
-//
-//        container.loadPersistentStores { storeDescription, error in
-//            if let error = error {
-//                fatalError("Fatal error loading store: \(error.localizedDescription)")
-//            }
-//        }
-//    }
-//
-//    func save() {
-//        if viewContext.hasChanges {
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
+class DataController: ObservableObject {
 
   let container = NSPersistentContainer(name: "FavoriteGames") // load from .xcdatamodeld file
 
@@ -47,7 +17,6 @@ class DataController:ObservableObject {
     }
   }
 
-  // check data if already exists
   func checkIfDataExists(id: Int16) -> Bool {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedGame")
     fetchRequest.predicate = NSPredicate(format: "id == %d", id)

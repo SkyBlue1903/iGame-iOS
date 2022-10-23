@@ -9,23 +9,36 @@ import SwiftUI
 
 struct PageController: View {
 
-    @EnvironmentObject var viewRouter: ViewRouter
+  @EnvironmentObject var viewRouter: ViewRouter
 
-    var body: some View {
-        switch viewRouter.currentPage {
-        case .welcome:
-            WelcomeView()
-                .transition(.slide)
-        case .home:
-            ContentView()
-                .transition(.slide)
-        }
+  var body: some View {
+    switch viewRouter.currentPage {
+    case .welcome:
+      WelcomeView()
+              .transition(.slide)
+    case .home:
+      TabView {
+        ContentView()
+                .tabItem {
+                  Image(systemName: "square.grid.2x2")
+                  Text("Browse")
+                }
+        FavoriteView()
+                .tabItem {
+                  Image(systemName: "star")
+                  Text("Favorites")
+                }
+
+      }
+              .transition(.slide)
+
     }
+  }
 }
 
 struct PageController_Previews: PreviewProvider {
-    static var previews: some View {
-        PageController()
+  static var previews: some View {
+    PageController()
             .environmentObject(ViewRouter())
-    }
+  }
 }

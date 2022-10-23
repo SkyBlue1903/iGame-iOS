@@ -68,13 +68,13 @@ struct GameSummaryView: View {
 
             VStack {
               ForEach((0...3), id: \.self) {
-                  let tempArray = game.ratings[$0].components(separatedBy: " ")
+                let tempArray = game.ratings[$0].components(separatedBy: " ")
 
                 VStack(alignment: .trailing) {
                   if #available(iOS 16.0, *) {
                     Text("\(tempArray[0])".uppercased())
                             .multilineTextAlignment(.trailing)
-                            .bold()
+//                            .bold()
                   } else {
                     Text("\(tempArray[0])".uppercased())
                             .multilineTextAlignment(.trailing)

@@ -14,10 +14,6 @@ struct ContentView: View {
   @ObservedObject var fetchGame = FetchGame()
   @State var searchQuery = ""
 
-  @State private var showingFavoriteView = false
-
-
-
   var body: some View {
     if fetchGame.gamesData.isEmpty {
       NavigationView {
@@ -25,7 +21,6 @@ struct ContentView: View {
                 .navigationTitle("iGame")
 
       }
-
     } else {
       NavigationView {
         if searchQuery == "" {
@@ -57,16 +52,6 @@ struct ContentView: View {
                   .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                       Button(action: {
-                        showingFavoriteView.toggle()
-                      }) {
-                        Image(systemName: "star.square.on.square")
-                      }
-                              .sheet(isPresented: $showingFavoriteView) {
-                                FavoriteView()
-                              }
-                    }
-                    ToolbarItem(placement: .navigationBarLeading) {
-                      Button(action: {
                         profileIsExpanded.toggle()
                       }) {
                         Image(systemName: "person.crop.circle")
@@ -78,7 +63,7 @@ struct ContentView: View {
                   }
         } else {
           List {
-            Text("Search results for: \(searchQuery)")
+            Text("Search result for: \(searchQuery)")
             ForEach(fetchGame.gamesData.filter({ searchQuery.isEmpty ? true : $0.name.lowercased().contains(searchQuery.lowercased()) })) { game in
               NavigationLink(destination: GameDetailView(game: game)) {
                 HStack {
@@ -87,6 +72,7 @@ struct ContentView: View {
                           .scaledToFill()
                           .frame(width: 100, height: 100)
                           .cornerRadius(15)
+
                   VStack(alignment: .leading, spacing: 5) {
                     Text(game.name)
                             .font(.headline)
@@ -99,6 +85,7 @@ struct ContentView: View {
                     }
                   }
                 }
+
               }
             }
           }

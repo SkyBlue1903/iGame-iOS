@@ -45,8 +45,6 @@ struct FavoriteView: View {
                     ratings: game.ratings as! [String] ?? ["Unknown"],
                     screenshots: game.screenshots as! [String] ?? ["Unknown"]
             ))) {
-              let _ = print("Game Name: \(game.name ?? "No name")")
-              let _ = print("Game Tags:", game.tags as! [String] ?? "No tags")
               HStack {
                 WebImage(url: URL(string: game.background_image ?? ""))
                         .resizable()
@@ -83,6 +81,7 @@ struct FavoriteView: View {
                       }
                     }) {
                       Image(systemName: "trash")
+                              .foregroundColor(.red)
                               .alert(isPresented: $isPresentDeleteConfirmation) {
                                 Alert(
                                         title: Text("Delete all favorite games?"),
@@ -97,7 +96,6 @@ struct FavoriteView: View {
                                 )
                               }
                     }
-                    //
                   }
                 }
                 .toolbar {
@@ -105,7 +103,6 @@ struct FavoriteView: View {
                 }
                 .navigationTitle("Favorite Games")
       }
-
     }
   }
 

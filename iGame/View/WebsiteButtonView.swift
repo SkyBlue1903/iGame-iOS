@@ -9,7 +9,7 @@ struct WebsiteButtonView: View {
   var game: Game
 
   var body: some View {
-    GroupBox() {
+    GroupBox {
       HStack {
         Image(systemName: "globe")
         Text("Website")

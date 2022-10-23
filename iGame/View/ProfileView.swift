@@ -12,7 +12,7 @@ struct ProfileView: View {
   @State var username = ""
   @State var fullname = ""
   @State var job = ""
-//  @State var photo = ""
+
   @State var isShowingDevPage = false
   @State var isShowingEditPage = false
   @State private var isShowingAlert = false

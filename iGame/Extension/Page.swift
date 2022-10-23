@@ -8,6 +8,6 @@
 import Foundation
 
 enum Page {
-    case welcome
-    case home
+  case welcome
+  case home
 }

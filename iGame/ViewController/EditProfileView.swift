@@ -6,15 +6,12 @@
 //
 
 import SwiftUI
-import AlertToast
 
 struct EditProfileView: View {
 
   @State var username = ""
   @State var fullname = ""
   @State var job = ""
-  @State private var showToast = false
-//  @State var photo = ""
 
   @Environment(\.presentationMode) var presentationMode
 
@@ -31,7 +28,6 @@ struct EditProfileView: View {
             Button("Save") {
               Profile.saveProfile(username: username, fullname: fullname, job: job)
               presentationMode.wrappedValue.dismiss()
-              showToast = true
             }
           }
         }
@@ -39,9 +35,6 @@ struct EditProfileView: View {
                   getProfile()
                 }
       }
-              .toast(isPresenting: $showToast, duration: 5) {
-                AlertToast(displayMode: .banner(.pop), type: .regular, title: "Profile edited", subTitle: "Re-open this sheet to see changes")
-              }
               .navigationTitle("Edit Profile")
               .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
