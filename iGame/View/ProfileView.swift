@@ -16,7 +16,12 @@ struct ProfileView: View {
   @State var isShowingDevPage = false
   @State var isShowingEditPage = false
   @State private var isShowingAlert = false
+  @State var isNotificationEnabled = UserDefaults.standard.bool(forKey: "isNotificationEnabled")
+  let notification = NotificationHandler()
+  @State var isNotified = false
+
   @EnvironmentObject var viewRouter: ViewRouter
+  @Environment(\.presentationMode) var presentationMode
 
   var body: some View {
     NavigationView {
@@ -35,6 +40,16 @@ struct ProfileView: View {
           } else {
             Text(job)
           }
+          Button(action: {
+            isShowingEditPage.toggle()
+          }) {
+            Text("Edit Profile")
+          }
+                  .sheet(isPresented: $isShowingEditPage, onDismiss: {
+                    getProfile()
+                  }) {
+                    EditProfileView()
+                  }
         }
         Section(header: Text("Developer Information")) {
           Button("Show Developer Page") {
@@ -44,7 +59,7 @@ struct ProfileView: View {
                     DeveloperProfileView()
                   }
         }
-        Section(header: Text("Reset")) {
+        Section(header: Text("Reset Profile")) {
           Button("Delete Profile", role: .destructive) {
             isShowingAlert.toggle()
           }
@@ -58,6 +73,11 @@ struct ProfileView: View {
                     Text("This action cannot be undone, continue?")
                   }
         }
+
+          Section(header: Text("Notification Settings")) {
+            Toggle("Daily update", isOn: $isNotified)
+
+          }
       }
               .onAppear {
                 getProfile()
@@ -65,14 +85,10 @@ struct ProfileView: View {
               .navigationTitle("Hi, \(username)!👋")
               .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                  Button(action: {
-                    isShowingEditPage.toggle()
-                  }) {
-                    Text("Edit Profile")
+                // done button
+                  Button("Done") {
+                    presentationMode.wrappedValue.dismiss()
                   }
-                          .sheet(isPresented: $isShowingEditPage) {
-                            EditProfileView()
-                          }
                 }
               }
     }

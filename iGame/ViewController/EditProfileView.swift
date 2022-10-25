@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 
 struct EditProfileView: View {
 
   @State var username = ""
   @State var fullname = ""
   @State var job = ""
+  @State private var isShowingAlert = false
 
   @Environment(\.presentationMode) var presentationMode
 
@@ -19,8 +21,9 @@ struct EditProfileView: View {
     NavigationView {
       VStack {
         Form {
-          Section(header: Text("User detail")) {
-            TextField("Your nickname", text: $username)
+          Section(header: Text("User detail"), footer: Text("Your username will be used to identify you in the app, max. 10 characters")) {
+            TextField("Your username", text: $username)
+                    .onReceive(Just(username)) { _ in limitText(10) }
             TextField("Your fullname", text: $fullname)
             TextField("Your current job", text: $job)
           }
@@ -38,13 +41,19 @@ struct EditProfileView: View {
               .navigationTitle("Edit Profile")
               .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                  Button("Cancel") {
-                    presentationMode.wrappedValue.dismiss()
+                  Button("Cancel", role: .destructive) {
+                    isShowingAlert.toggle()
                   }
+                          .confirmationDialog("Are you sure?",
+                                  isPresented: $isShowingAlert) {
+                            Button("Discard changes", role: .destructive) {
+                              presentationMode.wrappedValue.dismiss()
+
+                            }
+                          } message: {
+                            Text("Your current changes will be discarded, continue?")
+                          }
                 }
-              }
-              .onAppear {
-                Profile.getProfile()
               }
     }
   }
@@ -53,6 +62,12 @@ struct EditProfileView: View {
     username = UserDefaults.standard.string(forKey: "Username") ?? ""
     fullname = UserDefaults.standard.string(forKey: "Fullname") ?? ""
     job = UserDefaults.standard.string(forKey: "Job") ?? ""
+  }
+
+  func limitText(_ upper: Int) {
+    if username.count > upper {
+      username = String(username.prefix(upper))
+    }
   }
 
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct WelcomeView: View {
 
@@ -15,6 +16,8 @@ struct WelcomeView: View {
   @State var isButtonAppear = false
   @FocusState var isInputActive: Bool
   @EnvironmentObject var viewRouter: ViewRouter
+
+  let notify = NotificationHandler()
 
   @ViewBuilder
   var body: some View {
@@ -41,13 +44,14 @@ struct WelcomeView: View {
               .foregroundColor(.gray)
 
 
-      TextField("Length min. 3 characters", text: $username, onEditingChanged: { _ in
+      TextField("Length between 3-10 characters", text: $username, onEditingChanged: { _ in
         if (username.count >= 3) {
           isButtonAppear = true
         } else {
           isButtonAppear = false
         }
       })
+              .onReceive(Just(username)) { _ in limitText(10) }
               .frame(height: 40)
               .background(Color(.systemGray6))
               .cornerRadius(10)
@@ -62,29 +66,9 @@ struct WelcomeView: View {
                 }
               }
       if isButtonAppear {
-//        Button(action: {
-//          Profile.saveProfile(username: username, fullname: fullname, job: job)
-//          ContentView()
-//        }, label: {
-//          VStack {
-//            Text("Let's Go \(Image(systemName: "arrow.forward"))")
-//                    .font(.title3)
-//                    .fontWeight(.bold)
-//                    .foregroundColor(.white)
-//                    .frame(maxWidth: .infinity)
-//                    .frame(height: 60)
-//                    .padding(.horizontal, 100)
-//                    .background(Color.blue)
-//                    .cornerRadius(50)
-//          }
-//                  .padding(.horizontal, 50)
-//                  .padding(.bottom, 25)
-//                  .frame(maxHeight: .infinity, alignment: .bottom)
-//        })
-//                .padding(.top, 30)
-
         Button(action: {
           Profile.saveProfile(username: username, fullname: fullname, job: job)
+          notify.askPermission()
           withAnimation {
             viewRouter.currentPage = .home
           }
@@ -106,6 +90,12 @@ struct WelcomeView: View {
     username = UserDefaults.standard.string(forKey: "Username") ?? ""
     fullname = UserDefaults.standard.string(forKey: "Fullname") ?? ""
     job = UserDefaults.standard.string(forKey: "Job") ?? ""
+  }
+
+  func limitText(_ upper: Int) {
+    if username.count > upper {
+      username = String(username.prefix(upper))
+    }
   }
 }
 

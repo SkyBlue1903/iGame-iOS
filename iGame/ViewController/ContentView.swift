@@ -63,7 +63,7 @@ struct ContentView: View {
                   }
         } else {
           List {
-            Text("Search result for: \(searchQuery)")
+            Text("Search results for: \(searchQuery)")
             ForEach(fetchGame.gamesData.filter({ searchQuery.isEmpty ? true : $0.name.lowercased().contains(searchQuery.lowercased()) })) { game in
               NavigationLink(destination: GameDetailView(game: game)) {
                 HStack {
