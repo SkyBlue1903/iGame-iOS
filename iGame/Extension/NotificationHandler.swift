@@ -12,25 +12,31 @@ class NotificationHandler {
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
       if success {
         UserDefaults.standard.set(true, forKey: "isNotificationEnabled")
+        print("Notification enabled")
       } else if let error = error {
         print(error.localizedDescription)
+      } else if !success {
+        UserDefaults.standard.set(false, forKey: "isNotificationEnabled")
       }
     }
   }
 
-  func sendNotification(date: Date, type: String, timeInterval: Double = 5, title: String, body: String) {
-    var trigger: UNNotificationTrigger?
+  func sendNotification(daily: Bool) {
 
-    if type == "date" {
-      let dataComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-      trigger = UNCalendarNotificationTrigger(dateMatching: dataComponents, repeats: false)
-    } else if type == "time" {
-      trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
-    }
+    var date = DateComponents()
+    date.hour = 6
+    date.minute = 00
+
+    let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: daily)
 
     let content = UNMutableNotificationContent()
-    content.title = title
-    content.body = body
+    let getToday = Date.today
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEEE"
+    let today = formatter.string(from: getToday)
+
+    content.title = "Daily game updates"
+    content.body = "\(today) picks for \(userFullName()), let's explore!"
     content.sound = UNNotificationSound.default
 
     let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -38,18 +44,47 @@ class NotificationHandler {
     UNUserNotificationCenter.current().add(request)
   }
 
-  func resetPermission() {
+  func RemoveAllSentNotifications() {
     UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
   }
 
-  func checkNotification() {
+  func checkPermission() {
     UNUserNotificationCenter.current().getNotificationSettings { [self] settings in
       if settings.authorizationStatus == .authorized {
         UserDefaults.standard.set(true, forKey: "isNotificationEnabled")
       } else {
         UserDefaults.standard.set(false, forKey: "isNotificationEnabled")
       }
+    }
+
+  }
+
+  func testNotification() {
+    UNUserNotificationCenter.current().getNotificationSettings { [self] settings in
+      if settings.authorizationStatus == .authorized {
+        print("Notification will be sent in 5 secs")
+        let content = UNMutableNotificationContent()
+        let today = Date.today
+        content.title = "iGame notification"
+        content.body = "Hey \(userFullName()), don't forget we'll sent you game updates daily at 6 am"
+        content.sound = UNNotificationSound.default
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+
+        UNUserNotificationCenter.current().add(request)
+      }
+    }
+  }
+
+  func userFullName() -> String {
+    if UserDefaults.standard.string(forKey: "Fullname")!.count == 0 {
+      return "You"
+    } else {
+      return UserDefaults.standard.string(forKey: "Fullname")!
     }
 
   }

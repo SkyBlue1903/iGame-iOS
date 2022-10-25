@@ -22,7 +22,6 @@ struct WelcomeView: View {
   @ViewBuilder
   var body: some View {
     VStack {
-      let _ = print("Current uname: \(username)")
       Image(uiImage: UIImage(named: "welcome")!)
               .resizable()
               .scaledToFit()
@@ -44,14 +43,16 @@ struct WelcomeView: View {
               .foregroundColor(.gray)
 
 
-      TextField("Length between 3-10 characters", text: $username, onEditingChanged: { _ in
+      TextField("Length between 3-12 characters", text: $username, onEditingChanged: { _ in
         if (username.count >= 3) {
           isButtonAppear = true
         } else {
           isButtonAppear = false
         }
       })
-              .onReceive(Just(username)) { _ in limitText(10) }
+              .onReceive(Just(username)) { _ in
+                limitText(12)
+              }
               .frame(height: 40)
               .background(Color(.systemGray6))
               .cornerRadius(10)
@@ -69,6 +70,7 @@ struct WelcomeView: View {
         Button(action: {
           Profile.saveProfile(username: username, fullname: fullname, job: job)
           notify.askPermission()
+          UserDefaults.standard.set(false, forKey: "DailyNotifications")
           withAnimation {
             viewRouter.currentPage = .home
           }

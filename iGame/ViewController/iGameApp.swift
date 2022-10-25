@@ -11,15 +11,15 @@ import SwiftUI
 struct iGameApp: App {
 
   @StateObject private var dataController = DataController()
-    @StateObject var viewRouter = ViewRouter()
+  @StateObject var viewRouter = ViewRouter()
 
   var body: some Scene {
     WindowGroup {
-        PageController()
-            .environment(\.managedObjectContext, dataController.container.viewContext)
-            .environmentObject(viewRouter)
-        
+      PageController()
+              .environment(\.managedObjectContext, dataController.container.viewContext)
+              .environmentObject(viewRouter)
+
     }
-      
+
   }
 }

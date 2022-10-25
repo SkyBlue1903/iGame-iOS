@@ -13,6 +13,7 @@ struct ContentView: View {
   @State private var profileIsExpanded = false
   @ObservedObject var fetchGame = FetchGame()
   @State var searchQuery = ""
+  let notification = NotificationHandler()
 
   var body: some View {
     if fetchGame.gamesData.isEmpty {
@@ -23,6 +24,7 @@ struct ContentView: View {
       }
     } else {
       NavigationView {
+        let _ = notification.checkPermission()
         if searchQuery == "" {
           List(fetchGame.gamesData) { game in
             NavigationLink(destination: GameDetailView(game: game)) {
@@ -99,3 +101,4 @@ struct ContentView: View {
 
 
 }
+

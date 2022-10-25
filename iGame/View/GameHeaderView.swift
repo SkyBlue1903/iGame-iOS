@@ -13,7 +13,6 @@ struct GameHeaderView: View {
   var game: Game
   var body: some View {
     ZStack {
-      // load image using sdwebimage
       WebImage(url: URL(string: image))
               .resizable()
               .scaledToFill()

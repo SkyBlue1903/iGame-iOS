@@ -15,10 +15,11 @@ struct ProfileView: View {
 
   @State var isShowingDevPage = false
   @State var isShowingEditPage = false
-  @State private var isShowingAlert = false
-  @State var isNotificationEnabled = UserDefaults.standard.bool(forKey: "isNotificationEnabled")
+  @State private var isShowingDeleteAlert = false
+  @State private var isShowingNotificationAlert = false
+  @State var currentSetting = UserDefaults.standard.bool(forKey: "isNotificationEnabled")
+  @State var dailyToggle = UserDefaults.standard.bool(forKey: "DailyNotifications")
   let notification = NotificationHandler()
-  @State var isNotified = false
 
   @EnvironmentObject var viewRouter: ViewRouter
   @Environment(\.presentationMode) var presentationMode
@@ -61,10 +62,10 @@ struct ProfileView: View {
         }
         Section(header: Text("Reset Profile")) {
           Button("Delete Profile", role: .destructive) {
-            isShowingAlert.toggle()
+            isShowingDeleteAlert.toggle()
           }
                   .confirmationDialog("Are you sure?",
-                          isPresented: $isShowingAlert) {
+                          isPresented: $isShowingDeleteAlert) {
                     Button("Delete", role: .destructive) {
                       Profile.resetProfile()
                       viewRouter.currentPage = .welcome
@@ -74,18 +75,43 @@ struct ProfileView: View {
                   }
         }
 
-          Section(header: Text("Notification Settings")) {
-            Toggle("Daily update", isOn: $isNotified)
+        Section(header: Text("Notification Settings"), footer: Text("We'll sent daily updates at 6 am.\nA test notification will be sent in 5 seconds.")) {
+          Toggle("Daily Update", isOn: $dailyToggle)
+                  .alert(isPresented: $isShowingNotificationAlert) {
+                    Alert(title: Text("Notification Permission"),
+                            message: Text("Please enable notification permission in the settings"),
+                            dismissButton: .default(Text("OK")))
+                  }
+                  .onChange(of: dailyToggle) { _ in
+                    if dailyToggle {
+                      if !currentSetting {
+                        dailyToggle.toggle()
+                        isShowingNotificationAlert.toggle()
+                      } else {
+                        UserDefaults.standard.set(true, forKey: "DailyNotifications")
+                        notification.sendNotification(daily: true)
+                      }
+                    } else {
+                      UserDefaults.standard.set(false, forKey: "DailyNotifications")
+                      notification.sendNotification(daily: false)
+                      notification.RemoveAllSentNotifications()
+                    }
+                  }
 
+          Button("Test Notification") {
+            notification.testNotification()
           }
+                  .disabled(!dailyToggle)
+        }
       }
               .onAppear {
                 getProfile()
+                notification.checkPermission()
               }
               .navigationTitle("Hi, \(username)!👋")
               .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                // done button
+                  // done button
                   Button("Done") {
                     presentationMode.wrappedValue.dismiss()
                   }
@@ -95,6 +121,7 @@ struct ProfileView: View {
 
 
   }
+
 
   func getProfile() {
     username = UserDefaults.standard.string(forKey: "Username") ?? ""
@@ -116,3 +143,4 @@ struct ProfileView_Previews: PreviewProvider {
     ProfileView()
   }
 }
+

@@ -148,3 +148,10 @@ struct GameDescriptionView: View {
     }
   }
 }
+
+// preview
+struct GameDetailView_Previews: PreviewProvider {
+  static var previews: some View {
+    GameDetailView(game: Game(id: 123, name: "asad", released: "2022", rating: 4.65, background_image: "ds", description: "asd", website: "asda", genres: ["12"], publishers: ["12"], developers: ["12"], platforms: ["123"], tags: ["123"], ratings: ["1231212312312312", "123123123123123", "13123131312"], screenshots: ["123123"]))
+  }
+}

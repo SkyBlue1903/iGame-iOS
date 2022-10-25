@@ -21,9 +21,11 @@ struct EditProfileView: View {
     NavigationView {
       VStack {
         Form {
-          Section(header: Text("User detail"), footer: Text("Your username will be used to identify you in the app, max. 10 characters")) {
+          Section(header: Text("User detail"), footer: Text("Your username will be used to identify you in the app, input the username between 3-12 characters")) {
             TextField("Your username", text: $username)
-                    .onReceive(Just(username)) { _ in limitText(10) }
+                    .onReceive(Just(username)) { _ in
+                      limitText(12)
+                    }
             TextField("Your fullname", text: $fullname)
             TextField("Your current job", text: $job)
           }
@@ -32,6 +34,7 @@ struct EditProfileView: View {
               Profile.saveProfile(username: username, fullname: fullname, job: job)
               presentationMode.wrappedValue.dismiss()
             }
+                    .disabled(countText(3))
           }
         }
                 .onAppear {
@@ -67,6 +70,14 @@ struct EditProfileView: View {
   func limitText(_ upper: Int) {
     if username.count > upper {
       username = String(username.prefix(upper))
+    }
+  }
+
+  func countText(_ upper: Int) -> Bool {
+    if username.count >= upper {
+      return false
+    } else {
+      return true
     }
   }
 
