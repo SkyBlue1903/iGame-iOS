@@ -6,7 +6,7 @@
 > Project Date: September, 22nd - October, 25st 2022
 
 ## App Features
-1. Completely ritten in SwiftUI
+1. Completely written in SwiftUI
 2. Load data dynamically using API - JSON
 3. In-app search
 4. Save favorite games to local storage using Core Data
