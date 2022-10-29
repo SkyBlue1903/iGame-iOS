@@ -32,13 +32,13 @@ struct GameDetailView: View {
                       .font(.title)
                       .fontWeight(.heavy)
               Spacer()
-              var results = DataController().checkIfDataExists(id: Int16(game.id))
+              var results = DataController().checkIfDataExists(id: Int64(game.id))
               if !results && !isFavorite {
                 Button(action: {
                   showToast.toggle()
                   self.isFavorite.toggle()
                   let newGame = SavedGame(context: moc)
-                  newGame.id = Int16(game.id)
+                  newGame.id = Int64(game.id)
                   newGame.name = game.name
                   newGame.background_image = game.background_image
                   newGame.released = game.released

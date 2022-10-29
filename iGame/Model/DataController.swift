@@ -17,7 +17,7 @@ class DataController: ObservableObject {
     }
   }
 
-  func checkIfDataExists(id: Int16) -> Bool {
+  func checkIfDataExists(id: Int64) -> Bool {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedGame")
     fetchRequest.predicate = NSPredicate(format: "id == %d", id)
     do {
