@@ -31,4 +31,16 @@ class DataController: ObservableObject {
     return true
   }
 
+  func deleteData(id: Int64) {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedGame")
+    fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+    do {
+      let test = try container.viewContext.fetch(fetchRequest)
+      let objectToDelete = test[0] as! NSManagedObject
+      container.viewContext.delete(objectToDelete)
+      try container.viewContext.save()
+    } catch {
+      print("Error: \(error)")
+    }
+  }
 }
