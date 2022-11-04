@@ -1,4 +1,7 @@
 //
+//  RatingView.swift
+//  iGame
+//
 // Created by Erlangga Anugrah Arifin on 22/09/22.
 //
 

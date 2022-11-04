@@ -1,4 +1,7 @@
 //
+//  Profile.swift
+//  iGame
+//
 // Created by Erlangga Anugrah Arifin on 22/10/22.
 //
 
@@ -7,9 +10,9 @@ import Foundation
 struct Profile {
 
   static func getProfile() {
-    let username = UserDefaults.standard.string(forKey: "Username") ?? ""
-    let fullname = UserDefaults.standard.string(forKey: "Fullname") ?? ""
-    let job = UserDefaults.standard.string(forKey: "Job") ?? ""
+    _ = UserDefaults.standard.string(forKey: "Username") ?? ""
+    _ = UserDefaults.standard.string(forKey: "Fullname") ?? ""
+    _ = UserDefaults.standard.string(forKey: "Job") ?? ""
   }
 
   static func saveProfile(username: String, fullname: String, job: String) {

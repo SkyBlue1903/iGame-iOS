@@ -8,7 +8,6 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-
 struct FavoriteView: View {
 
   @FetchRequest(sortDescriptors: []) var games: FetchedResults<SavedGame>
@@ -43,7 +42,7 @@ struct FavoriteView: View {
                 .navigationTitle("Favorite Games")
       } else {
         List {
-            ForEach(saved, content: { game in
+          ForEach(saved, content: { game in
             NavigationLink(destination: GameDetailFavoriteView(game: Game(
                     id: Int(game.id),
                     name: game.name ?? "Untitled",
@@ -60,7 +59,6 @@ struct FavoriteView: View {
                     ratings: game.ratings as? [String] ?? [""],
                     screenshots: game.screenshots as? [String] ?? [""]
             )
-                    , isRefreshed: $isRefreshed
             )) {
               HStack {
                 WebImage(url: URL(string: game.background_image ?? ""))

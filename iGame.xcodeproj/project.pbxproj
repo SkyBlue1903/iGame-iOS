@@ -28,7 +28,6 @@
 		578C27DB28E5F7F600359B12 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 578C27DA28E5F7F600359B12 /* SDWebImageSwiftUI */; };
 		57B4BF7929003D2C00A2F5A2 /* FavoriteGames.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57B4BF7729003D2C00A2F5A2 /* FavoriteGames.xcdatamodeld */; };
 		57B4BF7C290042A400A2F5A2 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4BF7B290042A400A2F5A2 /* FavoriteView.swift */; };
-		57B4BF7F2900E4FC00A2F5A2 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 57B4BF7E2900E4FC00A2F5A2 /* AlertToast */; };
 		57C2F96C29037545005B9B2D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2F96B29037545005B9B2D /* WelcomeView.swift */; };
 		57D32B3A290441320097B753 /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D32B39290441320097B753 /* PageController.swift */; };
 		57D32B3C2904413E0097B753 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D32B3B2904413E0097B753 /* Page.swift */; };
@@ -72,7 +71,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				578C27DB28E5F7F600359B12 /* SDWebImageSwiftUI in Frameworks */,
-				57B4BF7F2900E4FC00A2F5A2 /* AlertToast in Frameworks */,
 				577A278028DC219D00118BD4 /* SwiftyJSON in Frameworks */,
 				577A277D28DC217800118BD4 /* Alamofire in Frameworks */,
 			);
@@ -197,7 +195,6 @@
 				577A277C28DC217800118BD4 /* Alamofire */,
 				577A277F28DC219D00118BD4 /* SwiftyJSON */,
 				578C27DA28E5F7F600359B12 /* SDWebImageSwiftUI */,
-				57B4BF7E2900E4FC00A2F5A2 /* AlertToast */,
 			);
 			productName = iGame;
 			productReference = 577A276728DBDD2900118BD4 /* iGame.app */;
@@ -231,7 +228,6 @@
 				577A277B28DC217800118BD4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				577A277E28DC219D00118BD4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				578C27D928E5F7F600359B12 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				57B4BF7D2900E4FC00A2F5A2 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 577A276828DBDD2900118BD4 /* Products */;
 			projectDirPath = "";
@@ -519,14 +515,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		57B4BF7D2900E4FC00A2F5A2 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elai950/AlertToast";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -544,11 +532,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 578C27D928E5F7F600359B12 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
-		};
-		57B4BF7E2900E4FC00A2F5A2 /* AlertToast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 57B4BF7D2900E4FC00A2F5A2 /* XCRemoteSwiftPackageReference "AlertToast" */;
-			productName = AlertToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 

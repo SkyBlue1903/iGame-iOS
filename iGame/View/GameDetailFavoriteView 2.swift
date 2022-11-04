@@ -2,13 +2,14 @@
 //  GameDetailView.swift
 //  iGame
 //
-//  Created by Erlangga Anugrah Arifin on 22/09/22.
+//  Created by Erlangga Anugrah Arifin on 04/11/22.
 //
 
 import SwiftUI
 import SDWebImageSwiftUI
+import AlertToast
 
-struct GameDetailView: View {
+struct GameDetailFavoriteView: View {
 
   var game: Game
   @State private var descIsExpanded = false
@@ -16,13 +17,14 @@ struct GameDetailView: View {
   @Environment(\.managedObjectContext) var moc
   @Environment(\.dismiss) var dismiss
   @State var isFavorite = false
-  @State private var toastSaved = false
-  @State private var toastDeleted = false
+  @State private var showToast = false
 
-//  @Binding var isRefreshed: Bool
+  @Binding var isRefreshed: Bool
 
 
   var body: some View {
+
+//    var isFavorite = DataController().checkIfDataExists(id: Int64(game.id))
 
     NavigationView {
       ScrollView(.vertical, showsIndicators: false) {
@@ -35,37 +37,6 @@ struct GameDetailView: View {
                       .font(.title)
                       .fontWeight(.heavy)
               Spacer()
-
-              Button(action: {
-                isFavorite.toggle()
-                if isFavorite {
-                  toastSaved.toggle()
-                  let newGame = SavedGame(context: moc)
-                  newGame.id = Int64(game.id)
-                  newGame.name = game.name
-                  newGame.background_image = game.background_image
-                  newGame.released = game.released
-                  newGame.rating = game.rating
-                  newGame.game_description = game.description
-                  newGame.website = game.website
-                  newGame.developers = game.developers as NSObject
-                  newGame.publishers = game.publishers as NSObject
-                  newGame.genres = game.genres as NSObject
-                  newGame.platforms = game.platforms as NSObject
-                  newGame.screenshots = game.screenshots as NSObject
-                  newGame.tags = game.tags as NSObject
-                  newGame.ratings = game.ratings as NSObject
-                  try? moc.save()
-                } else {
-                  toastDeleted.toggle()
-                  DataController().deleteData(id: Int64(game.id))
-                }
-              }, label: {
-                Image(systemName: isFavorite ? "heart.fill" : "heart")
-                        .font(.title)
-                        .foregroundColor(isFavorite ? .red : .gray)
-              })
-
 
             }
             HStack {
@@ -124,39 +95,12 @@ struct GameDetailView: View {
               .edgesIgnoringSafeArea(.top)
     }
             .navigationViewStyle(StackNavigationViewStyle())
-            .onAppear {
-              isFavorite = DataController().checkIfDataExists(id: Int64(game.id))
-            }
   }
 
-  func saveANewGame() {
-    let newGame = SavedGame(context: moc)
-    newGame.id = Int64(game.id)
-    newGame.name = game.name
-    newGame.background_image = game.background_image
-    newGame.released = game.released
-    newGame.rating = game.rating
-    newGame.game_description = game.description
-    newGame.website = game.website
-    newGame.developers = game.developers as NSObject
-    newGame.publishers = game.publishers as NSObject
-    newGame.genres = game.genres as NSObject
-    newGame.platforms = game.platforms as NSObject
-    newGame.screenshots = game.screenshots as NSObject
-    newGame.tags = game.tags as NSObject
-    newGame.ratings = game.ratings as NSObject
-  }
-
-  func deleteAGame() {
-    let results = DataController().checkIfDataExists(id: Int64(game.id))
-    if results {
-      DataController().deleteData(id: Int64(game.id))
-    }
-  }
 }
 
 
-struct GameDescriptionView: View {
+struct GameDescriptionFavoriteView: View {
 
   @Environment(\.dismiss) var dismiss
   var game: Game
@@ -182,8 +126,8 @@ struct GameDescriptionView: View {
 
 // preview
 
-struct GameDetailView_Previews: PreviewProvider {
+struct GameDetailFavoriteView_Previews: PreviewProvider {
   static var previews: some View {
-    GameDetailView(game: Game(id: 123, name: "asad", released: "2022", rating: 4.65, background_image: "ds", description: "asd", website: "asda", genres: ["12"], publishers: ["12"], developers: ["12"], platforms: ["123"], tags: ["123"], ratings: ["1231212312312312", "123123123123123", "13123131312"], screenshots: ["123123"]), isFavorite: false)
+    GameDetailView(game: Game(id: 123, name: "Lorem Ipsum", released: "2022", rating: 4.65, background_image: "ds", description: "asd", website: "asda", genres: ["12"], publishers: ["12"], developers: ["12"], platforms: ["123"], tags: ["123"], ratings: ["1231212312312312", "123123123123123", "13123131312"], screenshots: ["123123"]), isFavorite: false)
   }
 }

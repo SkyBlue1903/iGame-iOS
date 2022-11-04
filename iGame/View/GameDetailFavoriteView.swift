@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import AlertToast
 
 struct GameDetailFavoriteView: View {
 
@@ -17,15 +16,9 @@ struct GameDetailFavoriteView: View {
   @Environment(\.managedObjectContext) var moc
   @Environment(\.dismiss) var dismiss
   @State var isFavorite = false
-  @State private var showToast = false
-
-  @Binding var isRefreshed: Bool
 
 
   var body: some View {
-
-//    var isFavorite = DataController().checkIfDataExists(id: Int64(game.id))
-
     NavigationView {
       ScrollView(.vertical, showsIndicators: false) {
         VStack(alignment: .center, spacing: 20) {
