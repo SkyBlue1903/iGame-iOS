@@ -11,12 +11,16 @@ import SDWebImageSwiftUI
 struct ContentView: View {
 
   @State private var profileIsExpanded = false
+  @State private var favoriteIsExpanded = false
   @ObservedObject var fetchGame = FetchGame()
   @State var searchQuery = ""
   let notification = NotificationHandler()
 
+//  @State private var isRefreshed: Bool = false
+
   var body: some View {
     if fetchGame.gamesData.isEmpty {
+//        let _ = notification.checkPermission()
       NavigationView {
         ProgressView()
                 .navigationTitle("iGame")
@@ -24,7 +28,7 @@ struct ContentView: View {
       }
     } else {
       NavigationView {
-        let _ = notification.checkPermission()
+//        let _ = notification.checkPermission()
         if searchQuery == "" {
           List(fetchGame.gamesData) { game in
             NavigationLink(destination: GameDetailView(game: game)) {
@@ -54,12 +58,12 @@ struct ContentView: View {
                   .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                       Button(action: {
-                        profileIsExpanded.toggle()
+                        favoriteIsExpanded.toggle()
                       }) {
-                        Image(systemName: "person.crop.circle")
+                        Image(systemName: "star")
                       }
-                              .sheet(isPresented: $profileIsExpanded) {
-                                ProfileView()
+                              .sheet(isPresented: $favoriteIsExpanded) {
+                                FavoriteView()
                               }
                     }
                   }

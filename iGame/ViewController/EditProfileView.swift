@@ -58,6 +58,7 @@ struct EditProfileView: View {
                           }
                 }
               }
+              .interactiveDismissDisabled()
     }
   }
 

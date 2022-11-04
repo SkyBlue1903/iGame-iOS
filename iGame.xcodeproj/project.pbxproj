@@ -16,6 +16,7 @@
 		4832F9C94A2ABB6C8DA4FB04 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F6F007CFDBC6B28B9FB8 /* DataController.swift */; };
 		57216C142903714300EEE4F1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57216C132903714300EEE4F1 /* ProfileView.swift */; };
 		5735887A28E5EEED00B8CACA /* DeveloperProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735887928E5EEED00B8CACA /* DeveloperProfileView.swift */; };
+		5741FC102914A39A008BE630 /* GameDetailFavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741FC0F2914A39A008BE630 /* GameDetailFavoriteView.swift */; };
 		577A276B28DBDD2900118BD4 /* iGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276A28DBDD2900118BD4 /* iGameApp.swift */; };
 		577A276D28DBDD2900118BD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A276C28DBDD2900118BD4 /* ContentView.swift */; };
 		577A276F28DBDD2A00118BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577A276E28DBDD2A00118BD4 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		570C9F282904D531003244B6 /* iGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGame.entitlements; sourceTree = "<group>"; };
 		57216C132903714300EEE4F1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5735887928E5EEED00B8CACA /* DeveloperProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperProfileView.swift; sourceTree = "<group>"; };
+		5741FC0F2914A39A008BE630 /* GameDetailFavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailFavoriteView.swift; sourceTree = "<group>"; };
 		577A276728DBDD2900118BD4 /* iGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		577A276A28DBDD2900118BD4 /* iGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGameApp.swift; sourceTree = "<group>"; };
 		577A276C28DBDD2900118BD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				4832FFBB876714FC1984BE05 /* WebsiteButtonView.swift */,
 				5735887928E5EEED00B8CACA /* DeveloperProfileView.swift */,
 				57216C132903714300EEE4F1 /* ProfileView.swift */,
+				5741FC0F2914A39A008BE630 /* GameDetailFavoriteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				4832F4855116EBE5915A3DC3 /* EditProfileView.swift in Sources */,
 				4832F23D80B703398F6D9038 /* NotificationHandler.swift in Sources */,
 				4832F7F0106869130BDCC437 /* Extensions.swift in Sources */,
+				5741FC102914A39A008BE630 /* GameDetailFavoriteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

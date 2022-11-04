@@ -15,13 +15,15 @@ struct GameDetailView: View {
   @State private var descIsExpanded = false
 
   @Environment(\.managedObjectContext) var moc
+  @Environment(\.dismiss) var dismiss
   @State var isFavorite = false
-  @State private var showToast = false
+  @State private var toastSaved = false
+  @State private var toastDeleted = false
+
+//  @Binding var isRefreshed: Bool
 
 
   var body: some View {
-
-//    var isFavorite = DataController().checkIfDataExists(id: Int64(game.id))
 
     NavigationView {
       ScrollView(.vertical, showsIndicators: false) {
@@ -38,9 +40,26 @@ struct GameDetailView: View {
               Button(action: {
                 isFavorite.toggle()
                 if isFavorite {
-                  print("\(game.name) saved!")
+                  toastSaved.toggle()
+                  let newGame = SavedGame(context: moc)
+                  newGame.id = Int64(game.id)
+                  newGame.name = game.name
+                  newGame.background_image = game.background_image
+                  newGame.released = game.released
+                  newGame.rating = game.rating
+                  newGame.game_description = game.description
+                  newGame.website = game.website
+                  newGame.developers = game.developers as NSObject
+                  newGame.publishers = game.publishers as NSObject
+                  newGame.genres = game.genres as NSObject
+                  newGame.platforms = game.platforms as NSObject
+                  newGame.screenshots = game.screenshots as NSObject
+                  newGame.tags = game.tags as NSObject
+                  newGame.ratings = game.ratings as NSObject
+                  try? moc.save()
                 } else {
-                  print("\(game.name) deleted :(")
+                  toastDeleted.toggle()
+                  DataController().deleteData(id: Int64(game.id))
                 }
               }, label: {
                 Image(systemName: isFavorite ? "heart.fill" : "heart")
@@ -63,7 +82,7 @@ struct GameDetailView: View {
                     .font(.system(.title2))
             ScrollView(.horizontal, showsIndicators: true) {
               HStack(alignment: .center, spacing: 15) {
-                ForEach(0..<game.screenshots.count) { index in
+                ForEach(0..<game.screenshots.count, id: \.self) { index in
                   if game.screenshots.isEmpty {
                     ProgressView()
                             .frame(width: 350, height: 350)
@@ -105,9 +124,6 @@ struct GameDetailView: View {
       }
               .edgesIgnoringSafeArea(.top)
     }
-            .toast(isPresenting: $showToast, duration: 5) {
-              AlertToast(displayMode: .banner(.pop), type: .regular, title: "Success", subTitle: "Go to \"Star\" tab button to view")
-            }
             .navigationViewStyle(StackNavigationViewStyle())
             .onAppear {
               isFavorite = DataController().checkIfDataExists(id: Int64(game.id))
@@ -169,6 +185,6 @@ struct GameDescriptionView: View {
 
 struct GameDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    GameDetailView(game: Game(id: 123, name: "asad", released: "2022", rating: 4.65, background_image: "ds", description: "asd", website: "asda", genres: ["12"], publishers: ["12"], developers: ["12"], platforms: ["123"], tags: ["123"], ratings: ["1231212312312312", "123123123123123", "13123131312"], screenshots: ["123123"]))
+    GameDetailView(game: Game(id: 123, name: "asad", released: "2022", rating: 4.65, background_image: "ds", description: "asd", website: "asda", genres: ["12"], publishers: ["12"], developers: ["12"], platforms: ["123"], tags: ["123"], ratings: ["1231212312312312", "123123123123123", "13123131312"], screenshots: ["123123"]), isFavorite: false)
   }
 }

@@ -8,13 +8,20 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+
 struct FavoriteView: View {
 
   @FetchRequest(sortDescriptors: []) var games: FetchedResults<SavedGame>
+  @Environment(\.presentationMode) var presentationMode
   @Environment(\.managedObjectContext) var moc
   @State private var isPresentDeleteConfirmation = false
+  @State private var saved: [SavedGame] = [SavedGame]()
+
+  @State private var isRefreshed: Bool = false
+
 
   var body: some View {
+
     NavigationView {
       if games.isEmpty {
         VStack {
@@ -25,26 +32,36 @@ struct FavoriteView: View {
           Text("Try add one!")
                   .font(.body)
         }
+                .toolbar {
+                  ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                      presentationMode.wrappedValue.dismiss()
+                    }
+                  }
+                }
+                .interactiveDismissDisabled()
                 .navigationTitle("Favorite Games")
       } else {
         List {
-          ForEach(games) { game in
-            NavigationLink(destination: GameDetailView(game: Game(
+            ForEach(saved, content: { game in
+            NavigationLink(destination: GameDetailFavoriteView(game: Game(
                     id: Int(game.id),
                     name: game.name ?? "Untitled",
                     released: game.released ?? "Unknown",
-                    rating: game.rating ?? 0.0,
+                    rating: game.rating,
                     background_image: game.background_image ?? "",
                     description: game.game_description ?? "Lorem Ipsum",
                     website: game.website ?? "",
-                    genres: game.genres as! [String] ?? ["Unknown"],
-                    publishers: game.publishers as! [String] ?? ["Unknown"],
-                    developers: game.developers as! [String] ?? ["Unknown"],
-                    platforms: game.platforms as! [String] ?? ["Unknown"],
-                    tags: game.tags as! [String] ?? ["Unknown"],
-                    ratings: game.ratings as! [String] ?? ["Unknown"],
-                    screenshots: game.screenshots as! [String] ?? ["Unknown"]
-            ))) {
+                    genres: game.genres as? [String] ?? [""],
+                    publishers: game.publishers as? [String] ?? [""],
+                    developers: game.developers as? [String] ?? [""],
+                    platforms: game.platforms as? [String] ?? [""],
+                    tags: game.tags as? [String] ?? [""],
+                    ratings: game.ratings as? [String] ?? [""],
+                    screenshots: game.screenshots as? [String] ?? [""]
+            )
+                    , isRefreshed: $isRefreshed
+            )) {
               HStack {
                 WebImage(url: URL(string: game.background_image ?? ""))
                         .resizable()
@@ -60,18 +77,19 @@ struct FavoriteView: View {
                   Text(game.name ?? "Untitled")
                           .font(.title2)
                           .fontWeight(.bold)
-                  Text(game.released!.prefix(4))
+                  Text(game.released?.prefix(4) ?? "nil")
                           .font(.subheadline)
                           .foregroundColor(.gray)
-                  Text("Rating: \(game.rating ?? 0.0)")
+                  Text("Rating: \(String(game.rating))")
                           .font(.subheadline)
                           .foregroundColor(.gray)
                 }
               }
             }
-          }
+          })
                   .onDelete(perform: removeGame)
         }
+                .accentColor(isRefreshed ? .white : .black)
                 .toolbar {
                   ToolbarItem(placement: .navigationBarLeading) {
 
@@ -101,8 +119,27 @@ struct FavoriteView: View {
                 .toolbar {
                   EditButton()
                 }
+                .toolbar {
+                  ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Close") {
+                      presentationMode.wrappedValue.dismiss()
+                    }
+                  }
+                }
+                .interactiveDismissDisabled()
                 .navigationTitle("Favorite Games")
       }
+
+    }
+            .onAppear() {
+              recalculateSaved()
+
+            }
+  }
+
+  private func recalculateSaved() {
+    saved = games.map {
+      $0
     }
   }
 

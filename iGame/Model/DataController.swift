@@ -8,6 +8,7 @@ import Foundation
 class DataController: ObservableObject {
 
   let container = NSPersistentContainer(name: "FavoriteGames") // load from .xcdatamodeld file
+  var fetchedResultsController: NSFetchedResultsController<SavedGame>!
 
   init() {
     container.loadPersistentStores { storeDescription, error in
@@ -42,5 +43,29 @@ class DataController: ObservableObject {
     } catch {
       print("Error: \(error)")
     }
+  }
+
+  func deleteCurrentData(game: SavedGame) {
+    container.viewContext.delete(game)
+    do {
+      try container.viewContext.save()
+    } catch {
+      print("Error: \(error)")
+      container.viewContext.rollback()
+    }
+  }
+
+
+  func getAllData() -> [SavedGame] {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedGame")
+    let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    do {
+      let result = try container.viewContext.fetch(fetchRequest)
+      return result as! [SavedGame]
+    } catch {
+      print("Error: \(error)")
+    }
+    return []
   }
 }

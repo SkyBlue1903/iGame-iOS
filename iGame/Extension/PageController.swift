@@ -23,10 +23,10 @@ struct PageController: View {
                   Image(systemName: "square.grid.2x2")
                   Text("Browse")
                 }
-        FavoriteView()
+        ProfileView()
                 .tabItem {
-                  Image(systemName: "star")
-                  Text("Favorites")
+                  Image(systemName: "person.crop.circle")
+                  Text("Profile")
                 }
 
       }

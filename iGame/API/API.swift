@@ -72,7 +72,6 @@ class FetchGame: ObservableObject {
         let platforms = json["platforms"].arrayValue.map({ $0["platform"]["name"].stringValue })
         let tags = json["tags"].arrayValue.map({ $0["name"].stringValue })
         let ratings = json["ratings"].arrayValue.map({ "\($0["title"].stringValue) \($0["count"].intValue) \($0["percent"].intValue)%" })
-//                            print(ratings)
 
 
         // Game screenshots
@@ -83,7 +82,6 @@ class FetchGame: ObservableObject {
           if result != nil {
             let json = JSON(result!)
             let screenshots = json["results"].arrayValue.map({ $0["image"].stringValue })
-//                                    print(screenshots)
 
             DispatchQueue.main.async {
               self.gamesData.append(Game(id: id, name: name, released: released, rating: rating, background_image: background_image, description: description, website: website, genres: genres, publishers: publishers, developers: developers, platforms: platforms, tags: tags, ratings: ratings, screenshots: screenshots))
@@ -99,7 +97,7 @@ class FetchGame: ObservableObject {
 
     let game = gamesData
     let gameDescription = game.first(where: { $0.id == id })?.description
-    print("Game description: ", gameDescription)
+    print("Game description: ", gameDescription!)
     return gameDescription ?? ""
   }
 

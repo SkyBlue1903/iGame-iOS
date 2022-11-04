@@ -79,7 +79,7 @@ struct ProfileView: View {
           Toggle("Daily Update", isOn: $dailyToggle)
                   .alert(isPresented: $isShowingNotificationAlert) {
                     Alert(title: Text("Notification Permission"),
-                            message: Text("Please enable notification permission in the settings"),
+                            message: Text("Please enable notification permission in the settings, or try restarting the app."),
                             dismissButton: .default(Text("OK")))
                   }
                   .onChange(of: dailyToggle) { _ in
@@ -106,17 +106,11 @@ struct ProfileView: View {
       }
               .onAppear {
                 getProfile()
+                let _ = print("Check notification: \(currentSetting)")
                 notification.checkPermission()
+
               }
               .navigationTitle("Hi, \(username)!👋")
-              .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                  // done button
-                  Button("Done") {
-                    presentationMode.wrappedValue.dismiss()
-                  }
-                }
-              }
     }
 
 

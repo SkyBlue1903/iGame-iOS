@@ -50,7 +50,7 @@ class NotificationHandler {
   }
 
   func checkPermission() {
-    UNUserNotificationCenter.current().getNotificationSettings { [self] settings in
+    UNUserNotificationCenter.current().getNotificationSettings { settings in
       if settings.authorizationStatus == .authorized {
         UserDefaults.standard.set(true, forKey: "isNotificationEnabled")
       } else {
@@ -65,7 +65,7 @@ class NotificationHandler {
       if settings.authorizationStatus == .authorized {
         print("Notification will be sent in 5 secs")
         let content = UNMutableNotificationContent()
-        let today = Date.today
+        _ = Date.today
         content.title = "iGame notification"
         content.body = "Hey \(userFullName()), don't forget we'll sent you game updates daily at 6 am"
         content.sound = UNNotificationSound.default

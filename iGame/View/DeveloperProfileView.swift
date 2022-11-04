@@ -35,12 +35,6 @@ struct DeveloperProfileView: View {
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
-  }
-}
-
 struct PopupView: View {
   var body: some View {
     ZStack(alignment: .topLeading) {
@@ -151,6 +145,6 @@ struct PopupView: View {
 
 struct DeveloperProfileView_Previews: PreviewProvider {
   static var previews: some View {
-    ProfileView()
+    DeveloperProfileView()
   }
 }
