@@ -12,8 +12,8 @@
 		4832F3242431957F62862D0B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F07DAF9A4064E95C774B /* Profile.swift */; };
 		4832F4855116EBE5915A3DC3 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F63D1FF6532085F0F797 /* EditProfileView.swift */; };
 		4832F78068FCCE569D34927B /* WebsiteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832FFBB876714FC1984BE05 /* WebsiteButtonView.swift */; };
-		4832F7F0106869130BDCC437 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F5040611DFDDBB7A5259 /* Extensions.swift */; };
 		4832F9C94A2ABB6C8DA4FB04 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832F6F007CFDBC6B28B9FB8 /* DataController.swift */; };
+		4832FB0B274D3A1D4BA133DE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832FA3AE9BA9DF20B0FD438 /* Extensions.swift */; };
 		57216C142903714300EEE4F1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57216C132903714300EEE4F1 /* ProfileView.swift */; };
 		5735887A28E5EEED00B8CACA /* DeveloperProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735887928E5EEED00B8CACA /* DeveloperProfileView.swift */; };
 		5741FC102914A39A008BE630 /* GameDetailFavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741FC0F2914A39A008BE630 /* GameDetailFavoriteView.swift */; };
@@ -38,11 +38,11 @@
 
 /* Begin PBXFileReference section */
 		4832F07DAF9A4064E95C774B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		4832F5040611DFDDBB7A5259 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4832F63D1FF6532085F0F797 /* EditProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		4832F6F007CFDBC6B28B9FB8 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4832F7EC7EF5FA331A1CA042 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		4832F86A39DFD44562CC67CD /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		4832FA3AE9BA9DF20B0FD438 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4832FFBB876714FC1984BE05 /* WebsiteButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteButtonView.swift; sourceTree = "<group>"; };
 		570C9F282904D531003244B6 /* iGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGame.entitlements; sourceTree = "<group>"; };
 		57216C132903714300EEE4F1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 				57D32B3B2904413E0097B753 /* Page.swift */,
 				57D32B3D290441D10097B753 /* ViewRouter.swift */,
 				4832F7EC7EF5FA331A1CA042 /* NotificationHandler.swift */,
-				4832F5040611DFDDBB7A5259 /* Extensions.swift */,
+				4832FA3AE9BA9DF20B0FD438 /* Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -275,8 +275,8 @@
 				4832F3242431957F62862D0B /* Profile.swift in Sources */,
 				4832F4855116EBE5915A3DC3 /* EditProfileView.swift in Sources */,
 				4832F23D80B703398F6D9038 /* NotificationHandler.swift in Sources */,
-				4832F7F0106869130BDCC437 /* Extensions.swift in Sources */,
 				5741FC102914A39A008BE630 /* GameDetailFavoriteView.swift in Sources */,
+				4832FB0B274D3A1D4BA133DE /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

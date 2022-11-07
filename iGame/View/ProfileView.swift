@@ -17,7 +17,6 @@ struct ProfileView: View {
   @State var isShowingEditPage = false
   @State private var isShowingDeleteAlert = false
   @State private var isShowingNotificationAlert = false
-  @State var currentSetting = UserDefaults.standard.bool(forKey: "isNotificationEnabled")
   @State var dailyToggle = UserDefaults.standard.bool(forKey: "DailyNotifications")
   let notification = NotificationHandler()
 
@@ -84,17 +83,20 @@ struct ProfileView: View {
                   }
                   .onChange(of: dailyToggle) { _ in
                     if dailyToggle {
-                      if !currentSetting {
+                      if !UserDefaults.standard.bool(forKey: "isNotificationEnabled") {
                         dailyToggle.toggle()
+                        notification.checkPermission()
                         isShowingNotificationAlert.toggle()
                       } else {
                         UserDefaults.standard.set(true, forKey: "DailyNotifications")
                         notification.sendNotification(daily: true)
+                        notification.checkPermission()
                       }
                     } else {
                       UserDefaults.standard.set(false, forKey: "DailyNotifications")
                       notification.sendNotification(daily: false)
                       notification.RemoveAllSentNotifications()
+                      notification.checkPermission()
                     }
                   }
 
@@ -106,7 +108,6 @@ struct ProfileView: View {
       }
               .onAppear {
                 getProfile()
-                let _ = print("Check notification: \(currentSetting)")
                 notification.checkPermission()
 
               }

@@ -10,6 +10,7 @@ import SwiftUI
 struct PageController: View {
 
   @EnvironmentObject var viewRouter: ViewRouter
+  @State private var notification = NotificationHandler()
 
   var body: some View {
     switch viewRouter.currentPage {
@@ -27,6 +28,9 @@ struct PageController: View {
                 .tabItem {
                   Image(systemName: "person.crop.circle")
                   Text("Profile")
+                }
+                .onAppear {
+                  notification.checkPermission()
                 }
 
       }

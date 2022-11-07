@@ -42,7 +42,7 @@ struct FavoriteView: View {
                 .navigationTitle("Favorite Games")
       } else {
         List {
-          ForEach(saved, content: { game in
+          ForEach(games, content: { game in
             NavigationLink(destination: GameDetailFavoriteView(game: Game(
                     id: Int(game.id),
                     name: game.name ?? "Untitled",
@@ -129,10 +129,10 @@ struct FavoriteView: View {
       }
 
     }
-            .onAppear() {
-              recalculateSaved()
-
-            }
+//            .onAppear() {
+//              recalculateSaved()
+//
+//            }
   }
 
   private func recalculateSaved() {
